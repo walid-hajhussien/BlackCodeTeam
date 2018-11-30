@@ -15,25 +15,28 @@ angular.module('app').component('signup', {
 
     }
   },
-  // this.registeredSuccessfully = function () {
-  //
-  // },
+
   bindings: {},
   template : `
-
-  <div>
-    <form ng-submit = "$ctrl.signup(newMember)">
-      <input type="text" placeholder="enter your First name" ng-model="newMember.firstName"/></br>
-      <input type="text" placeholder="enter your Last name" ng-model="newMember.lastName"/></br>
-      <input type="text" placeholder="enter your User name" ng-model="newMember.userName"/></br>
-      <input type="number" placeholder="enter your Phone number" ng-model="newMember.phoneNumber"/></br>
-      <input type="email" placeholder="enter your  Email" ng-model="newMember.email"/></br>
-      <input type="password" placeholder="enter your Password" ng-model="newMember.password"/></br>
-      <input ng-click="submit = true" type="submit" value="Register"/>
-    </form>
-    <p ng-show="submit">registered Successfully</p>
-
+  <div class="panel"
+     <h2>Sign Up Page</h2>
+     <p>Please enter your Information</p>
   </div>
-  
+  <div class="login-form">
+  <div class="main-div">
+    <form id="Login" ng-submit = "$ctrl.signup(newMember)">
+    <div class="form-group">
+      <input class="form-control type="text" placeholder="enter your First name" ng-model="newMember.firstName"/></br>
+      <input class="form-control type="text" placeholder="enter your Last name" ng-model="newMember.lastName"/></br>
+      <input class="form-control type="text" placeholder="enter your User name" ng-model="newMember.userName"/></br>
+      <input class="form-control type="number" placeholder="enter your Phone number" ng-model="newMember.phoneNumber"/></br>
+      <input class="form-control" id="inputEmail" type="email" placeholder="enter your  Email" ng-model="newMember.email"/></br>
+      <input class="form-control" id="inputPassword" type="password" placeholder="enter your Password" ng-model="newMember.password"/></br>
+      <input class="btn btn-primary" ng-click="submit = true" type="submit" value="Sign Up"/>
+      </div>
+      </form>
+    <p ng-show="submit">Registered Successfully</p>
+  </div>
+  </div>
 `
 })
