@@ -20,7 +20,7 @@ dbConnection.connect(function(err) {
 
 // Note:create the query tables
 var queryCredentialTable=`
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS credential (
   id INTEGER NOT NULL AUTO_INCREMENT ,
   firstname text NOT NULL ,
   lastname text NOT NULL ,
