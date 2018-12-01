@@ -6,8 +6,4 @@ git remote add upstream https://github.com/BlackCodeTeam/BlackCodeTeam.git
 5)commit your codes
 6) git pull upstream master
 7) git push origin master
-<<<<<<< HEAD
 8) send pull request to the organization
-=======
-8) send pull request to the organisation
->>>>>>> 45e3e07cbaf94d7c6eb2da048c25d7473090b5ea
