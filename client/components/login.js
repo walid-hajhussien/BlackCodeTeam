@@ -2,7 +2,7 @@ angular.module('app').component('login', {
   controller:function(){
     this.loginData = function(login){
       var loginInfo = {
-        username: login.username,
+        username: login.usernamer,
         password: login.password
       }
       console.log("Login Info Was Saved " + "Username: " + login.username + " " + "Password: " + login.password)
@@ -14,7 +14,7 @@ angular.module('app').component('login', {
   bindings: {},
   template:`
     <section class="login-block">
-      <div class="container">
+      <div class="containerLogin">
         <div class="row">
           <div class="col-md-4 login-sec">
             <h2 class="text-center">Login Now</h2>
