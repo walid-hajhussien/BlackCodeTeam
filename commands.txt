@@ -1,4 +1,4 @@
-1) make fork from organisation to your account.
+1) make fork from organization to your account.
 2) clone the repo from your account .
 3) add the upstream :
 git remote add upstream https://github.com/BlackCodeTeam/BlackCodeTeam.git
@@ -6,4 +6,8 @@ git remote add upstream https://github.com/BlackCodeTeam/BlackCodeTeam.git
 5)commit your codes
 6) git pull upstream master
 7) git push origin master
+<<<<<<< HEAD
+8) send pull request to the organization
+=======
 8) send pull request to the organisation
+>>>>>>> 45e3e07cbaf94d7c6eb2da048c25d7473090b5ea
