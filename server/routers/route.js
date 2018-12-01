@@ -1,4 +1,5 @@
 var expres = require('express');
+var dbConnection=require('../../db/db.js')
 // setup the Router
 var router = expres.Router();
 // NOTE: declare varible , this varible is Object inside express help me to get the route method
@@ -6,8 +7,25 @@ var router = expres.Router();
 // NOTE: when user login
 router.route('/login')
   .post(function (req, res) {
-    console.log('ya i get message from /login');
-    res.send('hello world from server /login');
+    var username=req.body.username;
+    var password=req.body.password;
+    var query=`select * from credential where username=\"${username}\"`
+    //NOTE: 0-->(No username) 1-->(password corect) 2-->(wrong password) 3-->(ERROR)
+    dbConnection.db.query(query, function(err, result){
+      if(result){
+        if(result.length===0){
+          res.send('0');
+        }else if(result[0].password==password){
+          res.send('1');
+        }else{
+          res.send('2');
+        }
+
+      }else{
+        res.send('3');
+      }
+    })
+
   })
 // NOTE: when user get somthing from the login
 router.route('/login')
