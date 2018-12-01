@@ -1,23 +1,34 @@
 // Embedded below is express setup
-
-
 const express = require('express')
 var bodyParser = require('body-parser')
+
+// NOTE: require the Routers
+var router = require('./routers/route.js');
 const app = express();
 
+
+// NOTE : add the allow origion
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+//NOTE:add the static file
+app.use(express.static(__dirname + '/../client'));
+app.use(express.static(__dirname + '/../node_modules'));
+
+// add bodyParser
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 
-// NOTE:
-// this i will lines i will use  it when conect whit client
-// app.use(express.static(__dirname + '/../client'));
-//app.use('/scripts', express.static(path.join(__dirname,
-//'node_modules')));
-
+// use routers
+app.use('/user', router);
 
 // listen for request
-const port = process.env.port;
-
-app.listen(port || 4000, function () {
-  console.log('server now listening for requests on port : 4000');
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
 });
