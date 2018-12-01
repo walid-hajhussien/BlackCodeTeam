@@ -22,8 +22,18 @@
     "body-parse": "^0.1.0",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.3",
+<<<<<<< HEAD
+    "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.7"
+=======
+    "chai": "^4.2.0",
+    "express": "^4.16.4",
+    "jquery": "^3.3.1",
+    "mocha": "^5.2.0",
     "mysql": "^2.16.0"
+>>>>>>> 5cdc6f4529004744fde8abcf2c6117c711294547
   }
 }
