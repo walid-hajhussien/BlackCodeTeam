@@ -1,24 +1,24 @@
 angular.module('app').component('signup', {
-  controller:function(){
+  controller: function() {
 
-    this.signup=function(input){
-        var newInput ={
-        firstName : input.firstName,
-        lastName : input.lastName,
-        username : input.phoneNumber,
-        username : input.email,
-        username : input.username,
-        password : input.password,
-        available : true
+    this.signup = function(input) {
+      var newInput = {
+        firstName: input.firstName,
+        lastName: input.lastName,
+        username: input.phoneNumber,
+        username: input.email,
+        username: input.username,
+        password: input.password,
+        available: true
       }
 
-      console.log("our new input" , newInput)
+      console.log("our new input", newInput)
 
     }
   },
 
   bindings: {},
-  template : `
+  template: `
   <section class="signupform">
   <div class="container">
   <div class="signup-form">
