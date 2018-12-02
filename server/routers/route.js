@@ -7,6 +7,7 @@ var router = expres.Router();
 // NOTE: when user login
 router.route('/login')
   .post(function (req, res) {
+    console.log(req.body);
     var username=req.body.username;
     var password=req.body.password;
     var query=`select * from credential where username=\"${username}\"`
@@ -16,7 +17,9 @@ router.route('/login')
         if(result.length===0){
           res.send('0');
         }else if(result[0].password==password){
+          console.log(1);
           res.send('1');
+
         }else{
           res.send('2');
         }
@@ -39,8 +42,23 @@ router.route('/login')
 // NOTE: when user signup
 router.route('/signup')
   .post(function (req, res) {
-    console.log("ya iam post message from /signup");
-    res.send('hello world from server /signup');
+    console.log(req.body);
+    var firstName = req.body.firstName;
+    var lastName = req.body.lastName;
+    var phoneNumber = req.body.phoneNumber;
+    var email = req.body.email;
+    var username = req.body.username;
+    var password = req.body.password;
+    var query = `insert into credential values(null,\"${firstName}\",\"${lastName}\",\"${email}\",\"${phoneNumber}\",\"${username}\",\"${password}\")`
+    //NOTE: 0-->(Not save) 1-->(save correctly)
+    dbConnection.db.query(query, function(err, result) {
+      if (result) {
+        res.send("1")
+      } else {
+        res.send("0")
+      }
+    })
+
   });
 
 router.route('/signup')
