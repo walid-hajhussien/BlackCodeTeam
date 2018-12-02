@@ -1,16 +1,17 @@
 var mysql = require('mysql');
 
+
 //Note: to insert tht the database credential
 var dbConnection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: '19919901',
+  password: '12345678',
   insecureAuth: true,
   database: 'chat'
 });
 
 //Note:create the connection
-dbConnection.connect(function(err) {
+dbConnection.connect(function (err) {
   if (err) {
     console.log('access dinay to the database')
   } else {
@@ -19,7 +20,7 @@ dbConnection.connect(function(err) {
 });
 
 // Note:create the query tables
-var queryCredentialTable=`
+var queryCredentialTable = `
 CREATE TABLE IF NOT EXISTS credential (
   id INTEGER NOT NULL AUTO_INCREMENT ,
   firstname text NOT NULL ,
@@ -33,10 +34,10 @@ CREATE TABLE IF NOT EXISTS credential (
 `
 
 // Note:create the table
-dbConnection.query(queryCredentialTable, function(err, result){
-  if(result){
+dbConnection.query(queryCredentialTable, function (err, result) {
+  if (result) {
     console.log('Credential table has been created');
-  }else{
+  } else {
     console.log('Credential table return an ERROR');
   }
 })
