@@ -6,6 +6,7 @@ var router = expres.Router();
 
 // NOTE: when user login
 router.route('/login')
+
   .post(function(req, res) {
     console.log(req.body);
     var username = req.body.username;
@@ -16,11 +17,13 @@ router.route('/login')
       if (result) {
         if (result.length === 0) {
           res.send('0');
+
         } else if (result[0].password == password) {
           console.log(1);
           res.send('1');
 
         } else {
+
           res.send('2');
         }
 
@@ -41,7 +44,9 @@ router.route('/login')
 
 // NOTE: when user signup
 router.route('/signup')
+
   .post(function(req, res) {
+
     console.log(req.body);
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;

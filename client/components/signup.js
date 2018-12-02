@@ -1,4 +1,5 @@
 angular.module('app').component('signup', {
+
   controller: function(signup) {
 
     this.signup = function(input) {
@@ -28,9 +29,11 @@ angular.module('app').component('signup', {
         }
       })
 
+
     }
 
     //NOTE : variable
+
     this.success = false;
     this.alreadyuser = false;
   },
@@ -71,5 +74,6 @@ angular.module('app').component('signup', {
           </div>
         </div>
       </section>
+
 `
 })
