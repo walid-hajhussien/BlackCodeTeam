@@ -4,7 +4,7 @@
   "description": "Community service",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon server/index.js",
+    "start": "nodemon server/index.js",
     "test": "mocha"
   },
   "repository": {
@@ -31,6 +31,5 @@
     "mysql": "^2.16.0",
     "nodemon": "^1.18.7",
     "supertest": "^3.3.0"
-
   }
 }
