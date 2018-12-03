@@ -1,6 +1,8 @@
 angular.module('app').component('signup', {
 
+
   controller: function (signup) {
+
 
     this.signup = function (input) {
       var newInput = {
@@ -74,6 +76,8 @@ angular.module('app').component('signup', {
           </div>
         </div>
       </section>
+
+
 
 `
 })

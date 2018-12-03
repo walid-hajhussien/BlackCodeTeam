@@ -7,8 +7,10 @@ var router = expres.Router();
 
 // NOTE: when user login
 router.route('/login')
+
   .post(function (req, res) {
     console.log(req.body);
+
 
     var username = req.body.username;
     var password = req.body.password;
@@ -32,6 +34,7 @@ router.route('/login')
 
           })
 
+
         }
 
       } else {
@@ -54,7 +57,9 @@ router.route('/login')
 // NOTE: when user signup
 router.route('/signup')
 
+
   .post(function (req, res) {
+
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
     var phoneNumber = req.body.phoneNumber;
@@ -100,6 +105,7 @@ router.route('/addPost')
   });
 
 
+
 // NOTE: contact us
 router.route('/contact')
   .post(function (req, res) {
@@ -110,3 +116,4 @@ router.route('/contact')
   });
 
 module.exports = router;
+

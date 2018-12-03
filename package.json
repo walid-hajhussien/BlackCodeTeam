@@ -36,7 +36,6 @@
     "supertest": "^3.3.0",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^7.29.2"
-    
   },
   "devDependencies": {
     "jasmine": "^3.3.0",
