@@ -3,7 +3,7 @@ angular.module('app').component('login', {
 
 
 //NOTE : login function
-    this.loginData = function(login){
+    this.loginData = function(login,$scope){
       var loginInfo = {
         username: login.username,
         password: login.password
@@ -34,6 +34,12 @@ angular.module('app').component('login', {
     // NOTE: variable
     this.success=false;
     this.wrongpassword=false;
+
+    this.go=function(){
+      console.log('x',$scope.x);
+      $scope.x=true
+      console.log('x',$scope.x);
+    }
     this.changeUrl=function(){
       PermissionsService.setPermission('signup',true)
     }
@@ -76,7 +82,7 @@ angular.module('app').component('login', {
               <div class="row">
                 <div class="col-md-4 login-sec">
                   <h2 class="text-center" style="color:green">Login Successfull</h2>
-                        <button class="btn btn-success btn-lg buttonEnter">Enter</button>
+                        <a><button class="btn btn-success btn-lg buttonEnter" ng-click="$ctrl.go()">Enter</button></a>
                       </div>
                       <div class="col-md-8 banner-sec">
                       </div>

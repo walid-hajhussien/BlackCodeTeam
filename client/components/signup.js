@@ -1,8 +1,10 @@
 angular.module('app').component('signup', {
 
-  controller: function(signup) {
 
-    this.signup = function(input) {
+  controller: function (signup) {
+
+
+    this.signup = function (input) {
       var newInput = {
         firstName: input.firstName,
         lastName: input.lastName,
@@ -20,7 +22,7 @@ angular.module('app').component('signup', {
       input.password = "";
       that = this
 
-      signup.set(newInput, function(data) {
+      signup.set(newInput, function (data) {
         if (data.data == '1') {
           that.success = true
           that.alreadyuser = false
@@ -28,6 +30,7 @@ angular.module('app').component('signup', {
           that.alreadyuser = true
         }
       })
+
 
     }
 
@@ -73,5 +76,8 @@ angular.module('app').component('signup', {
           </div>
         </div>
       </section>
+
+
+
 `
 })
