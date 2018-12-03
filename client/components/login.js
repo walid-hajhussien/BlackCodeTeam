@@ -1,8 +1,8 @@
 angular.module('app').component('login', {
-  controller:function(check,$http,$scope){
+  controller:function(check,$http,$scope,PermissionsService,$location,$window){
 
 
-
+//NOTE : login function
     this.loginData = function(login){
       var loginInfo = {
         username: login.username,
@@ -19,7 +19,11 @@ angular.module('app').component('login', {
           that.wrongpassword=true;
         }else{
           that.wrongpassword=false;
-          that.success=true;
+            that.success=true;
+           // PermissionsService.setPermission('signup',true)
+           // $window.location.href = '#!/signup';
+           // $route.reload();
+
         }
       })
 
@@ -30,6 +34,9 @@ angular.module('app').component('login', {
     // NOTE: variable
     this.success=false;
     this.wrongpassword=false;
+    this.changeUrl=function(){
+      PermissionsService.setPermission('signup',true)
+    }
 
   },
   bindings: {},
@@ -53,7 +60,7 @@ angular.module('app').component('login', {
                       <button type="submit" class="btn btn-login float-left">Submit</button>
                     </div>
                   </form>
-                  <button class="btn btn-login float-right">SignUp</button>
+                  <a href="#!/signup"><button class="btn btn-login float-right" ng-click="$ctrl.changeUrl()">SignUp</button></a>
                     </br></br></br>
                     <p style="color :red;font-family:Comic Sans MS" ng-show="$ctrl.wrongpassword">Wrong UserName or Password  </p>
                 </div>
