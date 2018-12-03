@@ -155,7 +155,9 @@
 }
 
 /*End Login Section */
-/*Contact sectiom*/
+
+
+/* Contact section */
 .content-header {
   font-family: 'Oleo Script', cursive;
   color: #fcc500;
@@ -183,15 +185,16 @@
 
 .contact-section {
   padding-top: 40px;
+  padding-left: 30%;
 }
 
 .contact-section .col-md-6 {
   width: 100%;
 }
 
-.form-line {
+/*.form-line {
   border-right: 1px solid #B29999;
-}
+}*/
 
 .form-group {
   margin-top: 10px;
@@ -222,3 +225,10 @@ textarea.form-control {
 }
 
 /* End contact sectiom*/
+/*button Enter */
+.buttonEnter {
+  margin: 80px;
+  width: 200px;
+}
+
+/*button Enter End */
