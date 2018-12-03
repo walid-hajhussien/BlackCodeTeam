@@ -1,0 +1,11 @@
+<div>
+  <h1>UserProfile</h1>
+  <input type="text" placeholder="Search" ng-model="seach">
+  <ul>
+    <li ng-repeat="post in $ctrl.posts | filter:search">
+      <h3>{{post.image}} <br> - {{post.description}} <br> - {{post.condition}} - <br>{{post.availablity}} - <br>{{post.category}} - <br>{{post.username}} <br> - {{post.contactInfo}} <br> -
+        {{post.status}} </h3>
+      <button name="activate" ng-click="">{{}}</button>
+    </li>
+  </ul>
+</div>
