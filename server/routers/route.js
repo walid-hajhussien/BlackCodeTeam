@@ -99,12 +99,14 @@ router.route('/addPost')
     console.log("ya iam get message from /addPost/:id")
   });
 
+
 // NOTE: contact us
 router.route('/contact')
   .post(function (req, res) {
 
     console.log(req.body)
     res.send('done');
+
   });
 
 module.exports = router;

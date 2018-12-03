@@ -24,11 +24,14 @@ app.use(bodyParser.urlencoded({
 }));
 
 
+
 // use routers
 app.use('/user', router);
 
 // listen for request
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+  console.log(`Serve r is listening on port ${PORT}`);
 });
+
+
