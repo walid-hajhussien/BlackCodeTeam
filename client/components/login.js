@@ -1,9 +1,9 @@
 angular.module('app').component('login', {
-  controller:function(check,$http,$scope){
+  controller: function (check, $http, $scope) {
 
 
 
-    this.loginData = function(login){
+    this.loginData = function (login) {
       var loginInfo = {
         username: login.username,
         password: login.password
@@ -11,15 +11,15 @@ angular.module('app').component('login', {
 
       login.username = "";
       login.password = "";
-      var that=this;
+      var that = this;
 
-      check.set(loginInfo,function(data){
+      check.set(loginInfo, function (data) {
         console.log(data);
-        if(data.data=='0' || data.data=='2'){
-          that.wrongpassword=true;
-        }else{
-          that.wrongpassword=false;
-          that.success=true;
+        if (data.data == '0' || data.data == '2') {
+          that.wrongpassword = true;
+        } else {
+          that.wrongpassword = false;
+          that.success = true;
         }
       })
 
@@ -28,12 +28,12 @@ angular.module('app').component('login', {
     }
 
     // NOTE: variable
-    this.success=false;
-    this.wrongpassword=false;
+    this.success = false;
+    this.wrongpassword = false;
 
   },
   bindings: {},
-  template:`
+  template: `
     <section class="login-block" ng-show="!$ctrl.success">
       <div class="containerLogin">
         <div class="row">

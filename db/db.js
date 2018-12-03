@@ -5,13 +5,13 @@ var mysql = require('mysql');
 var dbConnection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: '0786927200',
+  password: '12345678',
   insecureAuth: true,
   database: 'chat'
 });
 
 //Note:create the connection
-dbConnection.connect(function(err) {
+dbConnection.connect(function (err) {
   if (err) {
     console.log('access dinay to the database')
   } else {
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS credential (
 `
 
 // Note:create the table
-dbConnection.query(queryCredentialTable, function(err, result) {
+dbConnection.query(queryCredentialTable, function (err, result) {
   if (result) {
     console.log('Credential table has been created');
   } else {
