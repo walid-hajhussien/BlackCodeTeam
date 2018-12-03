@@ -1,11 +1,187 @@
-<div>
-  <h1>UserProfile</h1>
-  <input type="text" placeholder="Search" ng-model="seach">
-  <ul>
-    <li ng-repeat="post in $ctrl.posts | filter:search">
-      <h3>{{post.image}} <br> - {{post.description}} <br> - {{post.condition}} - <br>{{post.availablity}} - <br>{{post.category}} - <br>{{post.username}} <br> - {{post.contactInfo}} <br> -
-        {{post.status}} </h3>
-      <button name="activate" ng-click="">{{}}</button>
-    </li>
-  </ul>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="[ col-xs-12 col-sm-offset-20 col-sm-10 ]">
+      <div id="custom-search-input">
+        <div class="input-group col-md-15">
+          <input type="text" class="  search-query form-control" placeholder="Search" ng-model="search" />
+          <span class="input-group-btn">
+            <button class="btn btn-danger" type="button">
+              <span class=" glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+        <br>
+        <ul class="event-list">
+          <li ng-repeat="post in $ctrl.posts | filter:search">
+            <div class="row">
+              <div class="[ col-xs-20 col-sm-offset-20 col-sm-10 ]">
+                <ul class="event-list">
+                  <li>
+                    <img alt={{post.category}} ng-src={{$ctrl.image[post.image]}} />
+                    <h2 class="title">{{post.category}}</h2>
+                    <p class="desc">{{$ctrl.image[post.image]}} <br> {{post.description}} <br> {{post.condition}} <br> {{post.availablity}} <br> {{post.username}} <br> {{post.contactInfo}} <br> {{post.btnName}} <br></p>
+                    <button class="btn glyphicon glyphicon-remove" name="activate" ng-click="$ctrl.activatBtn(post)">{{post.btnName}}</button>
+                  </li>
+          </li>
+        </ul>
+      </div>
+
+
+
+
+
+
+
+
+
+      <!--
+      body {
+      padding: 100px 0px;
+      background-color: rgb(220, 220, 220);
+      }
+
+      .event-list {
+      list-style: none;
+      font-family: 'Lato', sans-serif;
+      margin: 0px;
+      padding: 0px;
+
+      }
+      .event-list > li {
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0px 0px 5px rgb(51, 51, 51);
+      box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
+      padding: 0px;
+      margin: 0px 0px 30px ;
+
+      }
+
+      .event-list > li > img {
+      width: 100%;
+      }
+      .event-list > li > .info {
+      padding-top: 5px;
+      text-align: center;
+      }
+      .event-list > li > .info > .title {
+      font-size: 17pt;
+      font-weight: 700;
+      margin: 0px;
+      }
+      .event-list > li > .info > .desc {
+      font-size: 13pt;
+      font-weight: 300;
+      margin: 5px;
+
+      }
+      .event-list > li > time,
+      .event-list > li > img {
+      width: 120px;
+      float: left;
+      }
+      .event-list > li > .info {
+      background-color: rgb(245, 245, 245);
+      overflow: auto;
+      }
+
+      .event-list > li > .info {
+      position: relative;
+      height: 120px;
+      text-align: left;
+      padding-right: 40px;
+      } -->
+
+
+
+      <!-- <div class="container">
+        <div class="row">
+          <div class="col-sm-4 col-md-4">
+            <div class="post">
+              <div class="post-img-content">
+                <img src="http://placehold.it/460x250/e67e22/ffffff&text=HTML5" class="img-responsive" />
+                <span class="post-title"><b>Make a Image Blur Effects With</b><br />
+                  <b>CSS3 Blur</b></span>
+              </div>
+              <div class="content">
+                <div class="author">
+                  By <b>Bhaumik</b> |
+                  <time datetime="2014-01-20">January 20th, 2014</time>
+                </div>
+                <div>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                  Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                  unknown printer took a galley of type and scrambled it to make a type specimen book.
+                </div>
+                <div>
+                  <a href="http://www.jquery2dotnet.com/2014/01/jquery-highlight-table-row-and-column.html" class="btn btn-warning btn-sm">Read more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+
+
+
+
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-20 col-sm-offset-20 col-sm-10">
+            <ul>
+              <li ng-repeat="post in $ctrl.posts | filter:search">
+                <div class="post" style="border: 5px solid {{$ctrl.color[post.color]}}">
+                  <div class="post-img-content">
+                    <img ng-src={{$ctrl.image[post.image]}} class="img-responsive" />
+                  </div>
+                  <div class="content">
+                    <div>
+                      <p>{{post.description}}
+                        <p>
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">username</th>
+                                <th scope="col">category</th>
+                                <th scope="col">title</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>{{post.username}}</td>
+                                <td>{{$ctrl.category[post.category]}}</td>
+                                <td>{{post.username}}</td>
+                              </tr>
+                            </tbody>
+                            <thead>
+                              <tr>
+                                <th scope="col">phone</th>
+                                <th scope="col">condition</th>
+                                <th scope="col">availablity</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>{{post.phone}}</td>
+                                <td>{{post.condition}}</td>
+                                <td>{{post.availablity}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                    </div>
+                    <div>
+                      <button class="btn btn-danger" name="activate" ng-intit="co=red" ng-click="$ctrl.activatBtn(post)">{{post.btnName}}</button>
+                      <button type="button" class="btn btn-default btn-circle btn-xl"><i class="glyphicon glyphicon-ok"></i></button>
+                      <button type="button" class="btn btn-primary btn-circle btn-xl"><i class="glyphicon glyphicon-list"></i></button>
+                      <button type="button" class="btn btn-success btn-circle btn-xl"><i class="glyphicon glyphicon-link"></i></button>
+                      <button type="button" class="btn btn-info btn-circle btn-xl"><i class="glyphicon glyphicon-ok"></i></button>
+                      <button type="button" class="btn btn-warning btn-circle btn-xl"><i class="glyphicon glyphicon-remove"></i></button>
+                      <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-heart"></i></button>
+
+                    </div>
+                  </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
