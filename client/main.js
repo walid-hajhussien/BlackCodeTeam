@@ -9,6 +9,15 @@ $routeProvider
 .when('/signup',{
   template :'<signup></signup>'
 })
+.when('/home',{
+  template :'<home></home>'
+})
+.when('/aboutus',{
+  template :'<aboutus></aboutus>'
+})
+.when('/contact',{
+  template :'<contact></contact>'
+})
 .otherwise({
   redirectTo:'/login'
 })

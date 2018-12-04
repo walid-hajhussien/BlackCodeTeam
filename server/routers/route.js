@@ -25,9 +25,9 @@ router.route('/login')
 
         } else {
           // NOTE:  result[0].password
-          bcrypt.compare(password, result[0].password, function (err, result) {
-            if (result) {
-              res.send('1')
+          bcrypt.compare(password, result[0].password, function (err, data) {
+            if (data) {
+              res.send(result)
             } else {
               res.send('2');
             }
@@ -91,17 +91,40 @@ router.route('/signup')
     res.send('hello world from server /signup');
   });
 
-// NOTE: when user addPost
-router.route('/addPost')
-  .post(function (req, res) {
-    console.log("ya iam post message from /addPost");
-    res.send('hello world from server /addPost');
-  });
+
 // NOTE: when user get somthing from the addPost
-router.route('/addPost')
-  .get(function (req, res) {
-    res.send('hello world from server /addPost/:id');
-    console.log("ya iam get message from /addPost/:id")
+router.route('/addpost')
+  .post(function (req, res) {
+    var userid=req.body.userid;
+    var image = req.body.image;
+    var color = req.body.color;
+    var category = req.body.category;
+    var title = req.body.title;
+    var description = req.body.description;
+    var name = req.body.name;
+    var phone =req.body.phone;
+    var Email=req.body.Email;
+    var condition=req.body.condition.name;
+    var availablity=req.body.availablity;
+    var date =req.body.date;
+    var status=req.body.status;
+    console.log(req.body);
+
+    // NOTE: Query to insert the post information
+    var query = `insert into posts values
+    (null,\"${userid}\",\"${image}\",\"${color}\",\"${category}\",\"${title}\",\"${description}\",\"${name}\"
+  ,\"${phone}\",\"${Email}\",\"${condition}\",\"${availablity}\",\"${date}\",\"${status}\")`
+
+  // NOTE: insert post information to the database
+  dbConnection.db.query(query, function (err, result) {
+    if (result) {
+      res.send("1")
+    } else {
+      res.send("0")
+    }
+  })
+
+
   });
 
 
@@ -115,5 +138,13 @@ router.route('/contact')
 
   });
 
-module.exports = router;
+  // NOTE: retriveposts
+  router.route('/retriveposts')
+    .get(function (req, res) {
+        
+      console.log(req.body)
+      res.send('done');
 
+    });
+
+module.exports = router;
