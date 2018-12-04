@@ -1,7 +1,7 @@
 angular.module('app').component('signup', {
 
 
-  controller: function (signup) {
+  controller: function (signup,$location,$window) {
 
 
     this.signup = function (input) {
@@ -25,6 +25,8 @@ angular.module('app').component('signup', {
       signup.set(newInput, function (data) {
         if (data.data == '1') {
           that.success = true
+          $window.currentuser=data
+          $window.location.href = '#!/home';
           that.alreadyuser = false
         } else {
           that.alreadyuser = true

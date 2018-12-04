@@ -35,6 +35,7 @@ angular.module('app').component('contact', {
   bindings: {},
 
   template:`
+  <header></header>
     <section id="contact">
       <div class="section-content">
         <h1 class="section-header">Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Touch with us</span></h1>
