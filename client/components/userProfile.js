@@ -3,14 +3,19 @@ angular.module('app').component('userprofile', {
 
   controller: function () {
 
+
     this.activatBtn = function (post) {
+
       console.log(post);
       post.status = !post.status;
       if (post.status) {
         post.btnName = 'deactivat';
+        post.x = 'btn btn -default btn - circle btn - xl';
 
       } else {
         post.btnName = 'activate';
+        post.x = 'btn btn - info btn - circle btn - xl';
+
       }
     }
     this.category = {
@@ -60,7 +65,7 @@ angular.module('app').component('userprofile', {
       image: 6,
       color: 6,
       category: 6,
-      title: 'Book Avilabe live alone',
+      title: 'alone',
       description: 'Similarly, create split button dropdowns with virtually',
       username: 'Ahmed',
       phone: '0781501502',
@@ -72,7 +77,7 @@ angular.module('app').component('userprofile', {
       image: 1,
       color: 1,
       category: 1,
-      title: 'Book Avilabe live alone',
+      title: 'fork',
       description: 'Similarly, create split button dropdowns with virtually',
       username: 'Ahmed',
       phone: '0781501502',
@@ -84,14 +89,25 @@ angular.module('app').component('userprofile', {
 
   },
   bindings: {},
-  template: ` <div class="container">
+  template: `
+  <section >
+  <div  class="container">
+  <div id="custom-search-input">
+    <div class="input-group ">
+      <input type="text" class="  search-query form-control" placeholder="Search" ng-model="search" />
+      <span class="input-group-btn">
+        <button class="btn btn-danger" type="button">
+          <span class=" glyphicon glyphicon-search"></span>
+        </button>
+      </span>
+    </div>
     <div class="row">
-      <div class="col-xs-20 col-sm-offset-20 col-sm-10">
+      <div class="col-xs-20 col-sm-offset-20 col-sm-10" >
         <ul>
           <li ng-repeat="post in $ctrl.posts | filter:search">
             <div class="post" style="border: 5px solid {{$ctrl.color[post.color]}}">
               <div class="post-img-content">
-                <img ng-src={{$ctrl.image[post.image]}} class="img-responsive" />
+                <p align="center"><img ng-src={{$ctrl.image[post.image]}} class="img-responsive" /></p>
               </div>
               <div class="content">
                 <div>
@@ -130,19 +146,21 @@ angular.module('app').component('userprofile', {
 
                 </div>
                 <div>
-                  <button class="btn btn-danger" name="activate" ng-intit="co=red" ng-click="$ctrl.activatBtn(post)">{{post.btnName}}</button>
-                  <button type="button" class="btn btn-default btn-circle btn-xl"><i class="glyphicon glyphicon-ok"></i></button>
+                  <button class="btn btn-danger" name="activate"  ng-click="$ctrl.activatBtn(post)">{{post.btnName}}</button>
+                  <button type="button" class={{post.x}} ng-click="$ctrl.activatBtn(post)"><i class="glyphicon glyphicon-ok"></i></button>
                   <button type="button" class="btn btn-primary btn-circle btn-xl"><i class="glyphicon glyphicon-list"></i></button>
-                  <button type="button" class="btn btn-success btn-circle btn-xl"><i class="glyphicon glyphicon-link"></i></button>
                   <button type="button" class="btn btn-info btn-circle btn-xl"><i class="glyphicon glyphicon-ok"></i></button>
                   <button type="button" class="btn btn-warning btn-circle btn-xl"><i class="glyphicon glyphicon-remove"></i></button>
                   <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-heart"></i></button>
 
                 </div>
+                <br>
               </div>
+
           </li>
         </ul>
       </div>
     </div>
-  </div>`
+  </div>
+  </section>`
 })

@@ -334,22 +334,27 @@ section .section-title {
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
 body
 {
+  display:flex;
+  justify-content: center;
     padding-top: 20px;
     background-color: #F7F7F7;
+}
+#cont {
+  display:flex;
+  justify-content: center;
 }
 .post
 {   border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 0 1px #CCC;
+    margin: 10px;
+
+
 }
 .post img
-{   border: 2px solid blue;
+{   border: 2px solid white;
     border-radius: 12px;
-    filter: blur(2px);
-    -webkit-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -o-filter: blur(2px);
-    -ms-filter: blur(2px);
+
 }
 .post .content
 {
@@ -363,13 +368,13 @@ body
 }
 .post .post-img-content
 {
-    height: 150px;
+    height: 250px;
     position: relative;
 
 }
 .post .post-img-content img
 {
-  height: 150px;
+  height: 250px;
   position: relative;
 }
 .post .post-title
@@ -389,7 +394,12 @@ body
     margin-top: 5px;
 }
 
+ul {
+  list-style-type: none;
+  padding-left: 120px;
 
+
+}
 
 }
 /***** userProfile end *******/
