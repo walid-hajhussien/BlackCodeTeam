@@ -3,11 +3,12 @@ angular.module('app').component('login', {
 
 
 //NOTE : login function
-    this.loginData = function(login,$scope){
+    this.loginData = function(login){
       var loginInfo = {
         username: login.username,
         password: login.password
       }
+
 
       login.username = "";
       login.password = "";
@@ -18,11 +19,14 @@ angular.module('app').component('login', {
         if(data.data=='0' || data.data=='2'){
           that.wrongpassword=true;
         }else{
+          console.log('server data',data);
           that.wrongpassword=false;
             that.success=true;
-           // PermissionsService.setPermission('signup',true)
-           // $window.location.href = '#!/signup';
-           // $route.reload();
+            // that.addcurrentuser(data.data);
+              $window.currentuser=data.data;
+            PermissionsService.setPermission('signup',true)
+           $window.location.href = '#!/home';
+          //$route.reload();
 
         }
       })
@@ -35,11 +39,6 @@ angular.module('app').component('login', {
     this.success=false;
     this.wrongpassword=false;
 
-    this.go=function(){
-      console.log('x',$scope.x);
-      $scope.x=true
-      console.log('x',$scope.x);
-    }
     this.changeUrl=function(){
       PermissionsService.setPermission('signup',true)
     }
@@ -82,7 +81,7 @@ angular.module('app').component('login', {
               <div class="row">
                 <div class="col-md-4 login-sec">
                   <h2 class="text-center" style="color:green">Login Successfull</h2>
-                        <a><button class="btn btn-success btn-lg buttonEnter" ng-click="$ctrl.go()">Enter</button></a>
+                        <a href="#!/home"><button class="btn btn-success btn-lg buttonEnter" ng-click="$ctrl.go()">Enter</button></a>
                       </div>
                       <div class="col-md-8 banner-sec">
                       </div>

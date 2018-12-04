@@ -33,6 +33,26 @@ CREATE TABLE IF NOT EXISTS credential (
 );
 `
 
+var queryPostsTable=`
+CREATE TABLE IF NOT EXISTS posts (
+  id INTEGER NOT NULL AUTO_INCREMENT ,
+  userid INTEGER NOT NULL,
+  image INTEGER NOT NULL ,
+  color INTEGER NOT NULL ,
+  category INTEGER NOT NULL ,
+  title text NOT NULL,
+  description text NOT NULL,
+  name text Not Null,
+  phone text Not Null,
+  email text Not Null,
+  cond text Not Null,
+  availablity INTEGER Not Null,
+  date text Not Null,
+  status INTEGER Not Null,
+  PRIMARY KEY (id)
+);
+`
+
 // Note:create the table
 dbConnection.query(queryCredentialTable, function(err, result) {
   if (result) {
@@ -41,6 +61,15 @@ dbConnection.query(queryCredentialTable, function(err, result) {
     console.log('Credential table return an ERROR');
   }
 })
+
+dbConnection.query(queryPostsTable, function(err, result) {
+  if (result) {
+    console.log('Posts table has been created');
+  } else {
+    console.log('Posts table return an ERROR');
+  }
+})
+
 
 
 module.exports.db = dbConnection;

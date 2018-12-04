@@ -155,8 +155,6 @@
 }
 
 /*End Login Section */
-
-
 /* Contact section */
 .content-header {
   font-family: 'Oleo Script', cursive;
@@ -170,7 +168,7 @@
 
 #contact {
   font-family: 'Teko', sans-serif;
-  padding-top: 60px;
+  padding-top: 40px;
   width: 100%;
   width: 100vw;
   height: 864px;
@@ -181,6 +179,7 @@
   background: linear-gradient(to left, #3a6186, #89253e);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #fff;
+  margin-top: -16px;
 }
 
 .contact-section {
@@ -195,7 +194,6 @@
 /*.form-line {
   border-right: 1px solid #B29999;
 }*/
-
 .form-group {
   margin-top: 10px;
 }
@@ -232,7 +230,6 @@ textarea.form-control {
 }
 
 /*button Enter End */
-
 /***** about us start *******/
 section {
   padding: 60px 0;
@@ -327,3 +324,144 @@ section .section-title {
 }
 
 /***** about us end *******/
+/*Header*/
+#ul2 {
+  list-style-type: none;
+  overflow: hidden;
+  background-color: #333;
+  margin-left: -8px;
+  margin-top: -8px;
+  margin-right: -8px;
+  padding: 0;
+}
+
+.li2 {
+  float: left;
+}
+
+.li2 a {
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding-left: 30px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-right: 25px;
+  margin-left: 0px;
+  margin-top: 0
+}
+
+.li2 a:hover {
+  background-color: #111;
+}
+
+#logout {
+  padding-left: 1000px;
+}
+
+/*End Header*/
+/*Search bar*/
+.btn-search {
+  background: #424242;
+  border-radius: 0;
+  color: #fff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #1c1c1c;
+}
+
+.btn-search:link, .btn-search:visited {
+  color: #fff;
+}
+
+.btn-search:active, .btn-search:hover {
+  background: #1c1c1c;
+  color: #fff;
+}
+
+/*End Search bar*/
+/*Post section*/
+.imagePost {
+  width: 280px;
+  height: 200px;
+}
+
+.divPostDescription {
+  height: 200px;
+  padding: 5px;
+}
+
+.allPost {
+  margin-left: 250px;
+}
+
+.homediv {
+  margin-right: 50px;
+}
+
+.homediv:hover {
+  border-color: black;
+  border-radius: 6px;
+  border-width: 1px;
+  cursor: pointer;
+}
+
+.PostTitle {
+  height: 50px;
+}
+
+.select {
+  border-radius: 0px;
+  height: 38px;
+  background-color: #424242;
+  /* color:darkgrey */
+}
+
+.addbutton {
+  border-radius: 0px;
+  background-color: #424242;
+  height: 38px;
+}
+
+.homeforminput {
+  width: 500px;
+}
+
+.selectaddpost {
+  width: 500px;
+}
+
+.hometextarea {
+  width: 500px;
+  margin-top: -20px;
+}
+
+.homeform {
+  margin-left: 500px;
+  width: 550px;
+  background-color: coral;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  border-radius: 10px;
+}
+
+.homeformelement {
+  padding-bottom: 20px;
+}
+
+.homeaddbutton {
+  width: 500px;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: teal
+}
+
+/*End POst section*/
+/*Footer section */
+.Copyright {
+  background-color: black
+}
+
+/*End Footer section */

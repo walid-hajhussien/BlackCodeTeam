@@ -20,6 +20,7 @@ angular.module('app').component('aboutus', {
   // Explain what you're offering them. ...
   // Cite examples of who you've served.
   template: `
+  <header></header>
 	<section id="what-we-do">
 		<div class="container-fluid">
 			<h2 class="section-title mb-2 h1">What we do</h2>
@@ -79,8 +80,8 @@ angular.module('app').component('aboutus', {
 					<div class="card">
 						<div class="card-block block-6">
 							<h3 class="card-title">Contact Us</h3>
-							<p class="card-text">we'll love to hear from you , if you have any ideas or comments , weather you need a help or going to help just hit the button.</p>
-              <a href="javascript:void();" title="Read more" class="read-more" >Contact Us<i class="fa fa-angle-double-right ml-2"></i></a>
+							<p class="card-text">we'll love to hear from you , if you have any ideas or comments , whether you need a help or going to help just hit the button.</p>
+              <a href="#!/contact" title="Read more" class="read-more" >Contact Us<i class="fa fa-angle-double-right ml-2"></i></a>
 						</div>
 					</div>
 				</div>
