@@ -10,11 +10,9 @@ angular.module('app').component('userprofile', {
       post.status = !post.status;
       if (post.status) {
         post.btnName = 'deactivat';
-        post.x = 'btn btn -default btn - circle btn - xl';
 
       } else {
         post.btnName = 'activate';
-        post.x = 'btn btn - info btn - circle btn - xl';
 
       }
     }
@@ -60,7 +58,8 @@ angular.module('app').component('userprofile', {
       availablity: 3,
       contactInfo: 04754564654,
       btnName: 'deactivat',
-      status: true
+      status: true,
+      date: '17/11/2018'
     }, {
       image: 6,
       color: 6,
@@ -72,7 +71,8 @@ angular.module('app').component('userprofile', {
       condition: 'good',
       availablity: 3,
       btnName: 'deactivat',
-      status: true
+      status: true,
+      date: '14/9/2018'
     }, {
       image: 1,
       color: 1,
@@ -84,7 +84,21 @@ angular.module('app').component('userprofile', {
       condition: 'good',
       availablity: 3,
       btnName: 'deactivat',
-      status: true
+      status: true,
+      date: '15/10/2018'
+    }, {
+      image: 5,
+      color: 5,
+      category: 5,
+      title: 'fork',
+      description: 'Similarly, create split button dropdowns with virtually',
+      username: 'Ahmed',
+      phone: '0781501502',
+      condition: 'good',
+      availablity: 3,
+      btnName: 'deactivat',
+      status: true,
+      date: '16/11/2018'
     }];
 
   },
@@ -104,15 +118,15 @@ angular.module('app').component('userprofile', {
     <div class="row">
       <div class="col-xs-20 col-sm-offset-20 col-sm-10" >
         <ul>
-          <li ng-repeat="post in $ctrl.posts | filter:search">
+          <li ng-repeat="post in $ctrl.posts | orderBy:'-date' | filter:search">
             <div class="post" style="border: 5px solid {{$ctrl.color[post.color]}}">
               <div class="post-img-content">
                 <p align="center"><img ng-src={{$ctrl.image[post.image]}} class="img-responsive" /></p>
               </div>
               <div class="content">
                 <div>
-                  <p>{{post.description}}
-                    <p>
+                  <p>{{post.description}}  <span style ="float:right">{{post.date}}</span> </p>
+
                       <table class="table">
                         <thead>
                           <tr>
@@ -145,19 +159,16 @@ angular.module('app').component('userprofile', {
                       </table>
 
                 </div>
-                <div>
-                  <button class="btn btn-danger" name="activate"  ng-click="$ctrl.activatBtn(post)">{{post.btnName}}</button>
-                  <button type="button" class={{post.x}} ng-click="$ctrl.activatBtn(post)"><i class="glyphicon glyphicon-ok"></i></button>
-                  <button type="button" class="btn btn-primary btn-circle btn-xl"><i class="glyphicon glyphicon-list"></i></button>
-                  <button type="button" class="btn btn-info btn-circle btn-xl"><i class="glyphicon glyphicon-ok"></i></button>
-                  <button type="button" class="btn btn-warning btn-circle btn-xl"><i class="glyphicon glyphicon-remove"></i></button>
+                <div >
+                  <button class="btn btn-danger" name="activate">{{post.btnName}}</button>
+                  <button type="button" class="btn btn-info btn-circle btn-xl" ng-click="$ctrl.activatBtn(post)" ng-show="!post.status"><i class="glyphicon glyphicon-ok"></i></button>
+                  <button type="button" class="btn btn-warning btn-circle btn-xl" ng-click="$ctrl.activatBtn(post)" ng-show="post.status"><i class="glyphicon glyphicon-remove"></i></button>
                   <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-heart"></i></button>
 
                 </div>
                 <br>
               </div>
-
-          </li>
+            </li>
         </ul>
       </div>
     </div>
