@@ -330,14 +330,12 @@ section .section-title {
 
 /***** userProfile start *******/
 
-@import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
-@import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
-body
+.userProfileSectio
 {
   display:flex;
   justify-content: center;
-    padding-top: 20px;
-    background-color: #F7F7F7;
+  padding-top: 20px;
+  background-color: #F7F7F7;
 }
 #cont {
   display:flex;
@@ -398,8 +396,11 @@ ul {
   list-style-type: none;
   padding-left: 120px;
 
-
+}
+.userprofileBtn{
+  padding: 10px;
+  width: 50px;
 }
 
-}
+
 /***** userProfile end *******/

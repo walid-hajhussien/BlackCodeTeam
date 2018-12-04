@@ -3,19 +3,22 @@ angular.module('app').component('userprofile', {
 
   controller: function () {
 
-
+    this.colorX = 'green'
     this.activatBtn = function (post) {
 
       console.log(post);
       post.status = !post.status;
       if (post.status) {
         post.btnName = 'deactivat';
-
+        post.colorX = 'green';
       } else {
         post.btnName = 'activate';
-
+        post.colorX = 'red';
       }
     }
+
+
+
     this.category = {
       0: 'furniture',
       1: 'electronic',
@@ -101,17 +104,25 @@ angular.module('app').component('userprofile', {
       date: '16/11/2018'
     }];
 
+    this.deleteBtn = (post) => {
+      console.log(this.posts);
+
+      var deletedPost = this.posts.indexOf(post);
+      this.posts.splice(deletedPost, 1);
+
+    }
+
   },
   bindings: {},
   template: `
-  <section >
-  <div  class="container">
+  <section class="userProfileSection">
+  <div class="container">
   <div id="custom-search-input">
     <div class="input-group ">
       <input type="text" class="  search-query form-control" placeholder="Search" ng-model="search" />
       <span class="input-group-btn">
         <button class="btn btn-danger" type="button">
-          <span class=" glyphicon glyphicon-search"></span>
+          <span class=" fa fa-search"></span>
         </button>
       </span>
     </div>
@@ -153,18 +164,26 @@ angular.module('app').component('userprofile', {
                           <tr>
                             <td>{{post.phone}}</td>
                             <td>{{post.condition}}</td>
-                            <td>{{post.availablity}}</td>
+                            <td>{{post.availablity}} day </td>
+                          </tr>
+                        </tbody>
+                        <thead>
+                          <tr>
+                            <th scope="col">{{post.btnName}}</th>
+                            <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                            <button type="button" class="btn btn-info fa fa-check userprofileBtn" ng-click="$ctrl.activatBtn(post)" ng-show="!post.status"><i class="glyphicon glyphicon-ok"></i></button>
+                            <button type="button" class="btn btn-warning fa fa-remove userprofileBtn" ng-click="$ctrl.activatBtn(post)" ng-show="post.status"><i class="glyphicon glyphicon-remove"></i></button>
+                            <button type="button" class="btn btn-danger fa fa-trash userprofileBtn" ng-click="$ctrl.deleteBtn(post)"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                            <td></td>
                           </tr>
                         </tbody>
                       </table>
-
-                </div>
-                <div >
-                  <button class="btn btn-danger" name="activate">{{post.btnName}}</button>
-                  <button type="button" class="btn btn-info btn-circle btn-xl" ng-click="$ctrl.activatBtn(post)" ng-show="!post.status"><i class="glyphicon glyphicon-ok"></i></button>
-                  <button type="button" class="btn btn-warning btn-circle btn-xl" ng-click="$ctrl.activatBtn(post)" ng-show="post.status"><i class="glyphicon glyphicon-remove"></i></button>
-                  <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-heart"></i></button>
-
                 </div>
                 <br>
               </div>

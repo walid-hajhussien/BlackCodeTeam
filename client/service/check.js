@@ -1,5 +1,5 @@
-angular.module('app').service('check', function($http, $window) {
-  this.set = function(data, cb) {
+angular.module('app').service('check', function ($http, $window) {
+  this.set = function (data, cb) {
 
     $http({
       method: 'POST',
