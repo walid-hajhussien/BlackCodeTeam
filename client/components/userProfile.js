@@ -3,21 +3,38 @@ angular.module('app').component('userprofile', {
 
   controller: function () {
 
-    this.colorX = 'green'
+    var that = this;
+    this.sweetalertClick = function (post) {
+
+      if (post) {
+        swal("warning!", "You should Deactivat the Post first!", "warning");
+      } else {
+        swal("Deleted!", "Your post is Deleted!", "success");
+      }
+
+    }
+
+    this.deleteBtn = (post) => {
+      console.log(post.status);
+      if (post.status) {
+        that.sweetalertClick(post.status);
+      } else {
+        var deletedPost = this.posts.indexOf(post);
+        this.posts.splice(deletedPost, 1);
+        that.sweetalertClick(post.status);
+      }
+    }
+
     this.activatBtn = function (post) {
 
       console.log(post);
       post.status = !post.status;
       if (post.status) {
         post.btnName = 'deactivat';
-        post.colorX = 'green';
       } else {
         post.btnName = 'activate';
-        post.colorX = 'red';
       }
     }
-
-
 
     this.category = {
       0: 'furniture',
@@ -104,13 +121,7 @@ angular.module('app').component('userprofile', {
       date: '16/11/2018'
     }];
 
-    this.deleteBtn = (post) => {
-      console.log(this.posts);
 
-      var deletedPost = this.posts.indexOf(post);
-      this.posts.splice(deletedPost, 1);
-
-    }
 
   },
   bindings: {},
@@ -136,7 +147,7 @@ angular.module('app').component('userprofile', {
               </div>
               <div class="content">
                 <div>
-                  <p>{{post.description}}  <span style ="float:right">{{post.date}}</span> </p>
+                  <p style="font-weight: bold">{{post.description}}  <span style ="float:right;color:lawngreen;">Date :{{post.date}}</span> </p>
 
                       <table class="table">
                         <thead>
@@ -150,7 +161,7 @@ angular.module('app').component('userprofile', {
                           <tr>
                             <td>{{post.username}}</td>
                             <td>{{$ctrl.category[post.category]}}</td>
-                            <td>{{post.username}}</td>
+                            <td>{{post.title}}</td>
                           </tr>
                         </tbody>
                         <thead>
