@@ -1,21 +1,21 @@
 angular.module('app').component('userprofile', {
 
-
+  // sweet alert message
   controller: function () {
 
     var that = this;
     this.sweetalertClick = function (post) {
-
+      // if the post.satsus is activa
       if (post) {
         swal("warning!", "You should Deactivat the Post first!", "warning");
       } else {
+        // post.status is deactivat
         swal("Deleted!", "Your post is Deleted!", "success");
       }
-
     }
 
+    // NOTE: take the indexOf of the post you want deleted then splice it
     this.deleteBtn = (post) => {
-      console.log(post.status);
       if (post.status) {
         that.sweetalertClick(post.status);
       } else {
@@ -27,7 +27,6 @@ angular.module('app').component('userprofile', {
 
     this.activatBtn = function (post) {
 
-      console.log(post);
       post.status = !post.status;
       if (post.status) {
         post.btnName = 'deactivat';
@@ -35,7 +34,7 @@ angular.module('app').component('userprofile', {
         post.btnName = 'activate';
       }
     }
-
+    // NOTE: posts category
     this.category = {
       0: 'furniture',
       1: 'electronic',
@@ -45,7 +44,7 @@ angular.module('app').component('userprofile', {
       5: 'food',
       6: 'book'
     }
-
+    // NOTE: posts colors
     this.color = {
       0: '#FFD700',
       1: '#2E8B57',
@@ -55,7 +54,7 @@ angular.module('app').component('userprofile', {
       5: '#800000',
       6: '#800080'
     }
-
+    // NOTE: post image
     this.image = {
       0: 'image/furniture-logo.jpg',
       1: 'image/electronics.jpg',
@@ -65,89 +64,172 @@ angular.module('app').component('userprofile', {
       5: 'image/somthing to eat.png',
       6: 'image/reading for everyone.jpg'
     }
-
+    // NOTE: all user posts
     this.posts = [{
-      image: 0,
-      color: 0,
-      category: 0,
-      title: 'Book Avilabe live alone',
-      description: 'Similarly, create split button dropdowns with virtually',
-      username: 'Ahmed',
-      phone: '0781501502',
-      condition: 'good',
-      availablity: 3,
-      contactInfo: 04754564654,
-      btnName: 'deactivat',
-      status: true,
-      date: '17/11/2018'
-    }, {
-      image: 6,
-      color: 6,
-      category: 6,
-      title: 'alone',
-      description: 'Similarly, create split button dropdowns with virtually',
-      username: 'Ahmed',
-      phone: '0781501502',
-      condition: 'good',
-      availablity: 3,
-      btnName: 'deactivat',
-      status: true,
-      date: '14/9/2018'
-    }, {
-      image: 1,
-      color: 1,
-      category: 1,
-      title: 'fork',
-      description: 'Similarly, create split button dropdowns with virtually',
-      username: 'Ahmed',
-      phone: '0781501502',
-      condition: 'good',
-      availablity: 3,
-      btnName: 'deactivat',
-      status: true,
-      date: '15/10/2018'
-    }, {
-      image: 5,
-      color: 5,
-      category: 5,
-      title: 'fork',
-      description: 'Similarly, create split button dropdowns with virtually',
-      username: 'Ahmed',
-      phone: '0781501502',
-      condition: 'good',
-      availablity: 3,
-      btnName: 'deactivat',
-      status: true,
-      date: '16/11/2018'
-    }];
-
+        image: 0,
+        color: 0,
+        category: 0,
+        title: 'Book Avilabe live alone',
+        description: 'Similarly, create split button dropdowns with virtually',
+        username: 'Ahmed',
+        phone: '0781501502',
+        condition: 'good',
+        availablity: 3,
+        contactInfo: 04754564654,
+        btnName: 'deactivate',
+        status: true,
+        date: '17/11/2018'
+      }, {
+        image: 6,
+        color: 6,
+        category: 6,
+        title: 'alone',
+        description: 'Similarly, create split button dropdowns with virtually',
+        username: 'Ahmed',
+        phone: '0781501502',
+        condition: 'good',
+        availablity: 2,
+        btnName: 'activate     ',
+        status: false,
+        date: '14/9/2018'
+      }, {
+        image: 1,
+        color: 1,
+        category: 1,
+        title: 'fork',
+        description: 'Similarly, create split button dropdowns with virtually',
+        username: 'Ahmed',
+        phone: '0781501502',
+        condition: 'good',
+        availablity: 4,
+        btnName: 'deactivat',
+        status: true,
+        date: '15/10/2018'
+      }, {
+        image: 6,
+        color: 6,
+        category: 6,
+        title: 'fork',
+        description: 'Similarly, create split button dropdowns with virtually',
+        username: 'Ahmed',
+        phone: '0781501502',
+        condition: 'good',
+        availablity: 5,
+        btnName: 'deactivat',
+        status: true,
+        date: '16/11/2018'
+      },
+      {
+        image: 6,
+        color: 6,
+        category: 6,
+        title: 'fork',
+        description: 'Similarly, create split button dropdowns with virtually',
+        username: 'Ahmed',
+        phone: '0781501502',
+        condition: 'good',
+        availablity: 5,
+        btnName: 'deactivat',
+        status: true,
+        date: '16/11/2018'
+      }, {
+        image: 6,
+        color: 6,
+        category: 6,
+        title: 'fork',
+        description: 'Similarly, create split button dropdowns with virtually',
+        username: 'Ahmed',
+        phone: '0781501502',
+        condition: 'good',
+        availablity: 5,
+        btnName: 'deactivat',
+        status: true,
+        date: '16/11/2018'
+      }, {
+        image: 6,
+        color: 6,
+        category: 6,
+        title: 'fork',
+        description: 'Similarly, create split button dropdowns with virtually',
+        username: 'Ahmed',
+        phone: '0781501502',
+        condition: 'good',
+        availablity: 5,
+        btnName: 'deactivat',
+        status: true,
+        date: '16/11/2018'
+      }, {
+        image: 6,
+        color: 6,
+        category: 6,
+        title: 'fork',
+        description: 'Similarly, create split button dropdowns with virtually',
+        username: 'Ahmed',
+        phone: '0781501502',
+        condition: 'good',
+        availablity: 5,
+        btnName: 'deactivat',
+        status: true,
+        date: '16/11/2018'
+      }, {
+        image: 6,
+        color: 6,
+        category: 6,
+        title: 'fork',
+        description: 'Similarly, create split button dropdowns with virtually',
+        username: 'Ahmed',
+        phone: '0781501502',
+        condition: 'good',
+        availablity: 5,
+        btnName: 'deactivat',
+        status: true,
+        date: '16/11/2018'
+      }
+    ];
 
 
   },
   bindings: {},
-  template: `
-  <section class="userProfileSection">
-  <div class="container">
-  <div id="custom-search-input">
-    <div class="input-group ">
-      <input type="text" class="  search-query form-control" placeholder="Search" ng-model="search" />
-      <span class="input-group-btn">
-        <button class="btn btn-danger" type="button">
-          <span class=" fa fa-search"></span>
-        </button>
-      </span>
-    </div>
-    <div class="row">
-      <div class="col-xs-20 col-sm-offset-20 col-sm-10" >
-        <ul>
-          <li ng-repeat="post in $ctrl.posts | orderBy:'-date' | filter:search">
-            <div class="post" style="border: 5px solid {{$ctrl.color[post.color]}}">
-              <div class="post-img-content">
-                <p align="center"><img ng-src={{$ctrl.image[post.image]}} class="img-responsive" /></p>
+  template: `<section class="userProfileSection">
+    <div class="container">
+      <div id="custom-search-input">
+        <div class="input-group ">
+          <input type="text" class="  search-query form-control" placeholder="Search" ng-model="search" />
+          <span class="input-group-btn">
+            <button class="btn btn-danger" type="button">
+              <span class=" fa fa-search"></span>
+            </button>
+          </span>
+        </div>
+        <div class="row">
+          <div class="col-xs-20 col-sm-offset-20 col-sm-10">
+
+          <br>
+          <div class="process">
+            <div class="process-row">
+              <div class="process-step">
+                <button type="button" class="btn btn-info fa fa-sort" ng-click="order = 'category'"></button>
+                <p>Sort by category</p>
               </div>
-              <div class="content">
-                <div>
-                  <p style="font-weight: bold">{{post.description}}  <span style ="float:right;color:lawngreen;">Date :{{post.date}}</span> </p>
+              <div class="process-step">
+                <button type="button" class="btn btn-danger fa fa-sort" ng-click="order = 'availability'"></button>
+                <p>Sort by availability</p>
+              </div>
+              <div class="process-step">
+                <button type="button" class="btn btn-success fa fa-calendar" ng-click="order = 'date'"></button>
+                <p>Sort by date</p>
+              </div>
+            </div>
+          </div>
+            <ul>
+              <li ng-repeat="post in $ctrl.posts | orderBy:'-date' | filter:search | orderBy:order">
+                <div class="post" style="border: 5px solid {{$ctrl.color[post.color]}}">
+                  <div class="post-img-content">
+                    <p align="center"><img ng-src={{$ctrl.image[post.image]}} class="img-responsive" /></p>
+                  </div>
+                  <div class="content">
+                    <div>
+                      <p style="font-weight: bold">{{post.description}} <span style="float:right;color:lawngreen;">Date :{{post.date}}</span> </p>
 
                       <table class="table">
                         <thead>
@@ -160,7 +242,7 @@ angular.module('app').component('userprofile', {
                         <tbody>
                           <tr>
                             <td>{{post.username}}</td>
-                            <td>{{$ctrl.category[post.category]}}</td>
+                            <td style="color:">{{$ctrl.category[post.category]}}</td>
                             <td>{{post.title}}</td>
                           </tr>
                         </tbody>
@@ -168,7 +250,7 @@ angular.module('app').component('userprofile', {
                           <tr>
                             <th scope="col">phone</th>
                             <th scope="col">condition</th>
-                            <th scope="col">availablity</th>
+                            <th scope="col">availability</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -178,30 +260,34 @@ angular.module('app').component('userprofile', {
                             <td>{{post.availablity}} day </td>
                           </tr>
                         </tbody>
+                        <thead><th></th></thead>
                         <thead>
                           <tr>
-                            <th scope="col">{{post.btnName}}</th>
-                            <th scope="col">Delete</th>
-                          </tr>
-                        </thead>
+                            <thead>
+                              <th>{{post.btnName}}</th>
+                              <th>Do you Need Delete the post</th>
+                            </thead>
                         <tbody>
                           <tr>
                             <td>
-                            <button type="button" class="btn btn-info fa fa-check userprofileBtn" ng-click="$ctrl.activatBtn(post)" ng-show="!post.status"><i class="glyphicon glyphicon-ok"></i></button>
-                            <button type="button" class="btn btn-warning fa fa-remove userprofileBtn" ng-click="$ctrl.activatBtn(post)" ng-show="post.status"><i class="glyphicon glyphicon-remove"></i></button>
-                            <button type="button" class="btn btn-danger fa fa-trash userprofileBtn" ng-click="$ctrl.deleteBtn(post)"><i class="fas fa-trash-alt"></i></button>
+                              <button type="button" class="btn btn-info fa fa-check userprofileBtn" ng-click="$ctrl.activatBtn(post)" ng-show="!post.status"><i class="glyphicon glyphicon-ok"></i></button>
+                              <button type="button" class="btn btn-warning fa fa-remove userprofileBtn" ng-click="$ctrl.activatBtn(post)" ng-show="post.status"><i class="glyphicon glyphicon-remove"></i></button>
                             </td>
-                            <td></td>
+                            <td>
+                              <button type="button" class="btn btn-danger fa fa-trash userprofileBtn" ng-click="$ctrl.deleteBtn(post)"><i class="fas fa-trash-alt"></i></button>
+                            </td>
                           </tr>
                         </tbody>
+                        </tr>
+                        </thead>
                       </table>
-                </div>
-                <br>
-              </div>
-            </li>
-        </ul>
+                    </div>
+                    <br>
+                  </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
   </section>`
 })
