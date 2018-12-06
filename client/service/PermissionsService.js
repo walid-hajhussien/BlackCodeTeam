@@ -5,7 +5,8 @@ angular.module('app').service('PermissionsService', function() {
     signup: false,
     home:false,
     aboutus:false,
-    contact:false
+    contact:false,
+    userprofile:false
 
   };
 

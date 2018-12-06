@@ -18,6 +18,9 @@ app.config(['$routeProvider', function($routeProvider) {
     .when('/contact', {
       template: '<contact></contact>'
     })
+    .when('/userprofile', {
+      template: '<userprofile></userprofile>'
+    })
     .otherwise({
       redirectTo: '/login'
     })
@@ -55,6 +58,11 @@ app.run(['$rootScope', '$location', 'PermissionsService','checksession', functio
         $location.path('/');
       }
       PermissionsService.setPermission('contact', false);
+    }else if (next.template === "<userprofile></userprofile>") {
+      if (!PermissionsService.getPermission('userprofile')) {
+        $location.path('/');
+      }
+      PermissionsService.setPermission('userprofile', false);
     }
   });
 
