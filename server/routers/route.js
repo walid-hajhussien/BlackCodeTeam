@@ -197,7 +197,7 @@ router.route('/contact')
 // NOTE: retriveposts
 router.route('/retriveposts')
   .get(function(req, res) {
-var query = `select * from posts`
+var query = `select * from posts where status=1`
 dbConnection.db.query(query, function(err, result) {
   if (result) {
     res.send(result)
