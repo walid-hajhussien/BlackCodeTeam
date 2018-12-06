@@ -46,7 +46,7 @@ angular.module('app').component('home', {
         <summary>Donator Details</summary>
         <h4>Name : ${post.name}</h4>
         <h4>Phone : ${post.phone}</h4>
-        <h4>Phone : ${post.Email}</h4>
+        <h4>Email : ${post.email}</h4>
         </details>
 
   `,
@@ -62,65 +62,28 @@ angular.module('app').component('home', {
     }
     // NOTE: variable
     this.showaddbutton = false
+    this.posts = []
 
 
     //this.user=$window.currentuser
 
     this.getposts = function() {
+      that=this
       retriveposts.set(function(data) {
-        console.log(data);
+        console.log(data.data[0]);
+        that.posts=data.data.slice()
+        that.mainposts=that.posts.slice()
+        console.log(that.posts);
       })
     }
 
+    this.getposts();
 
 
 
 
-    this.posts = [{
-      image: 0,
-      color: 0,
-      category: 0,
-      title: 'Book Avilabe live alone',
-      description: 'Another way to share data is to emit data from the child, which can be listed to by the parent. This approach is ideal when you want to share data changes that occur on things like button clicks, form entires, and other user events.',
-      name: 'Ahmed',
-      phone: '0781501502',
-      Email: 'Ahmed@yahoo.com',
-      date: '12/9/2018'
 
-    }, {
-      image: 1,
-      color: 1,
-      category: 1,
-      title: 'mony Avilabe live alone',
-      description: 'In the child, we declare a messageEvent variable with the Output decorator and set it equal to a new event emitter. Then we create a function named sendMessage that calls emit on this event with the message we want to send. Lastly, we create a button to trigger this function.',
-      name: 'walid',
-      phone: '079955642',
-      Email: 'walid@yahoo.com',
-      date: '12/4/2018'
 
-    }, {
-      image: 2,
-      color: 2,
-      category: 2,
-      title: 'car Avilabe live alone',
-      description: 'The parent can now subscribe to this messageEvent that’s outputted by the child component, then run the receive message function whenever this event occurs.',
-      name: 'yazeed',
-      phone: '0785566925',
-      Email: 'Yazeed@yahoo.com',
-      date: '12/5/2018'
-
-    }, {
-      image: 3,
-      color: 3,
-      category: 3,
-      title: 'choclate Avilabe live alone',
-      description: 'When passing data between components that lack a direct connection, such as siblings, grandchildren, etc, you should you a shared service. When you have data that should aways been in sync, I find the RxJS BehaviorSubject very useful in this situation.',
-      name: 'tareq',
-      phone: '0786655423',
-      Email: 'tareq@yahoo.com',
-      date: '12/2/2018'
-
-    }]
 
     this.mainposts = this.posts.slice();
     // NOTE:the below function for category filter
@@ -134,6 +97,7 @@ angular.module('app').component('home', {
           }
         }
         this.mainposts = array.slice()
+
       } else {
         this.mainposts = this.posts.slice()
       }
