@@ -197,9 +197,16 @@ router.route('/contact')
 // NOTE: retriveposts
 router.route('/retriveposts')
   .get(function(req, res) {
+var query = `select * from posts`
+dbConnection.db.query(query, function(err, result) {
+  if (result) {
+    res.send(result)
+  } else {
+    res.send("0")
+  }
+})
 
-    console.log(req.body)
-    res.send('done');
+
 
   });
 
