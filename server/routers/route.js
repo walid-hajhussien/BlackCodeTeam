@@ -14,7 +14,9 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(id, done) {
   var query = `select * from credential where id=\"${id}\"`
   dbConnection.db.query(query, function(err, data) {
-    if(err){return done(null,err)}
+    if (err) {
+      return done(null, err)
+    }
     done(null, data[0]);
   })
 
@@ -47,13 +49,13 @@ router.route('/login')
             if (data) {
               //create the session
               var userId = result[0].id
-              var user=result[0]
+              var user = result[0]
               console.log(userId)
 
 
 
               req.login(user, function(done) {
-                req.session.cookie.expires=3600000;
+                req.session.cookie.expires = 3600000;
                 res.send(result)
               })
 
@@ -104,6 +106,7 @@ router.route('/signup')
           if (result) {
             res.send("1")
           } else {
+            console.log(err);
             res.send("0")
           }
         })
@@ -115,8 +118,8 @@ router.route('/signup')
 router.route('/deletesession')
 
   .get(function(req, res) {
-        req.session.destroy();
-        res.send('1')
+    req.session.destroy();
+    res.send('1')
   });
 
 // NOTE: to check the user session

@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var dbConnection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: '19919901',
+  password: 'password',
   insecureAuth: true,
   database: 'chat'
 });
@@ -13,7 +13,7 @@ var dbConnection = mysql.createConnection({
 //Note:create the connection
 dbConnection.connect(function(err) {
   if (err) {
-    console.log('access dinay to the database')
+    console.log('access dinay to the database', err)
   } else {
     console.log('database has been connected')
   }
