@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS posts (
   name text Not Null,
   phone text Not Null,
   email text Not Null,
+  btnName text Not Null,
   cond text Not Null,
   availablity INTEGER Not Null,
   date text Not Null,

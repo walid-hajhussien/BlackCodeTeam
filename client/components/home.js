@@ -68,11 +68,11 @@ angular.module('app').component('home', {
     //this.user=$window.currentuser
 
     this.getposts = function() {
-      that=this
+      that = this
       retriveposts.set(function(data) {
         console.log(data.data[0]);
-        that.posts=data.data.slice()
-        that.mainposts=that.posts.slice()
+        that.posts = data.data.slice()
+        that.mainposts = that.posts.slice()
         console.log(that.posts);
       })
     }
@@ -119,7 +119,8 @@ angular.module('app').component('home', {
         availablity: post.availablity,
         date: new Date().toLocaleDateString(),
         status: 1,
-        userid: this.user[0].id
+        userid: this.user[0].id,
+        btnName: 'deactivate'
 
       }
       post.text = "";
@@ -230,7 +231,7 @@ angular.module('app').component('home', {
   </div>
 </div><br><br>
 
-<div class="bouncedelay container homeform" ng-show="$ctrl.showaddbutton">
+<div class="container homeform" ng-show="$ctrl.showaddbutton">
 <form ng-submit="$ctrl.add(post)" >
  <div class="form-group" class="homeformelement">
   <input type="text" class="form-control homeforminput"  placeholder="Title...." ng-model="post.title" ng-maxlength="9"></br>

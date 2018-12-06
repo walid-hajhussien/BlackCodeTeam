@@ -143,11 +143,19 @@ router.route('/checkSession')
 
   })
 
-router.route('/z')
+router.route('/userprofile')
   // NOTE: when user get somthing from the signup
-  .get(function(req, res) {
-    req.session.destroy()
-    res.send('done')
+  .post(function(req, res) {
+    var id = req.body.id
+    query = `select * from posts where userid=\"${id}\"`
+    dbConnection.db.query(query, function(err, result) {
+      if (result) {
+        res.send(result)
+      } else {
+        res.send("3")
+      }
+    })
+
   })
 // api https://ident.me/  ,https://api.ipify.org/
 
@@ -167,12 +175,13 @@ router.route('/addpost')
     var availablity = req.body.availablity;
     var date = req.body.date;
     var status = req.body.status;
+    var btnName = req.body.btnName;
     console.log(req.body);
 
     // NOTE: Query to insert the post information
     var query = `insert into posts values
     (null,\"${userid}\",\"${image}\",\"${color}\",\"${category}\",\"${title}\",\"${description}\",\"${name}\"
-  ,\"${phone}\",\"${Email}\",\"${condition}\",\"${availablity}\",\"${date}\",\"${status}\")`
+  ,\"${phone}\",\"${Email}\",\"${btnName}\",\"${condition}\",\"${availablity}\",\"${date}\",\"${status}\")`
 
     // NOTE: insert post information to the database
     dbConnection.db.query(query, function(err, result) {
@@ -200,14 +209,14 @@ router.route('/contact')
 // NOTE: retriveposts
 router.route('/retriveposts')
   .get(function(req, res) {
-var query = `select * from posts`
-dbConnection.db.query(query, function(err, result) {
-  if (result) {
-    res.send(result)
-  } else {
-    res.send("0")
-  }
-})
+    var query = `select * from posts where status=1`
+    dbConnection.db.query(query, function(err, result) {
+      if (result) {
+        res.send(result)
+      } else {
+        res.send("0")
+      }
+    })
 
 
 
