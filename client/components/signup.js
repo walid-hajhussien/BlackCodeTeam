@@ -24,9 +24,16 @@ angular.module('app').component('signup', {
 
       signup.set(newInput, function (data) {
         if (data.data == '1') {
-          that.success = true
-          $window.currentuser=data
-          $window.location.href = '#!/home';
+          Swal.queue([{
+            type: 'success',
+            title: 'you have successfully registered',
+            preConfirm:()=>{
+              $window.location.href = '#!/login';
+            }
+
+          }])
+
+
           that.alreadyuser = false
         } else {
           that.alreadyuser = true
@@ -38,13 +45,13 @@ angular.module('app').component('signup', {
 
     //NOTE : variable
 
-    this.success = false;
+
     this.alreadyuser = false;
   },
 
   bindings: {},
   template: `
- <section class="signupform" ng-show="!$ctrl.success">
+ <section class="signupform" >
  <div class="container">
  <div class="signup-form">
  <div class="main-div">
@@ -64,22 +71,6 @@ angular.module('app').component('signup', {
  </div>
  </div>
 </section>
-
-
-<section class="login-block" ng-show="$ctrl.success">
-  <div class="containerLogin">
-    <div class="row">
-      <div class="col-md-4 login-sec">
-        <h2 class="text-center" style="color:green">Registered Successfull</h2>
-              <button class="btn btn-success btn-lg buttonEnter">Enter</button>
-            </div>
-            <div class="col-md-8 banner-sec">
-            </div>
-          </div>
-        </div>
-      </section>
-
-
 
 `
 })
