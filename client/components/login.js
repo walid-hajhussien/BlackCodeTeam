@@ -1,89 +1,90 @@
 angular.module('app').component('login', {
-  controller:function(check,$http,$scope,PermissionsService,$location,$window){
+  controller: function(check, $http, $scope, PermissionsService, $location, $window) {
 
 
-//NOTE : login function
+    //NOTE : login function
 
-    this.loginData = function(login){
+    this.loginData = function(login) {
       var loginInfo = {
         username: login.username,
         password: login.password
       }
 
-//using sweat alert
-var that=this;
-var getip= function(cb){
-  const ipAPI = 'https://api.ipify.org?format=json'
+      //using sweat alert
+      var that = this;
+      var getip = function(cb) {
+        const ipAPI = 'https://api.ipify.org?format=json'
 
-  swal.queue([{
-  title: 'Public IP',
-  confirmButtonText: 'Get my public IP',
-  text:
-    'Your public IP is Requered to Login ',
-  showLoaderOnConfirm: true,
-  preConfirm: () => {
-    return fetch(ipAPI)
-      .then(response => response.json())
-      .then(data1 => { return swal.queue([{
-              confirmButtonText: 'ok',
-              title: 'Your public IP '+data1.ip,
-              preConfirm: () => {
-                      login.username = "";
-                      login.password = "";
-                      loginInfo.ip=data1.ip;
+        swal.queue([{
+          title: 'Public IP',
+          confirmButtonText: 'Get my public IP',
+          text: 'Your public IP is Requered to Login ',
+          showLoaderOnConfirm: true,
+          preConfirm: () => {
+            return fetch(ipAPI)
+              .then(response => response.json())
+              .then(data1 => {
+                return swal.queue([{
+                  confirmButtonText: 'ok',
+                  title: 'Your public IP ' + data1.ip,
+                  preConfirm: () => {
+                    login.username = "";
+                    login.password = "";
+                    loginInfo.ip = data1.ip;
 
-      // sent the information to the server
-      check.set(loginInfo,function(data){
-        console.log(data);
-        if(data.data=='0' || data.data=='2'){
-          that.wrongpassword=true;
-        }else{
-          console.log('server data',data);
-          that.wrongpassword=false;
-            that.success=true;
+                    // sent the information to the server
+                    check.set(loginInfo, function(data) {
+                      console.log(data);
+                      if (data.data == '0' || data.data == '2') {
+                        that.wrongpassword = true;
+                      } else {
+                        console.log('server data', data);
+                        that.wrongpassword = false;
+                        that.success = true;
 
-             // $window.currentuser=data.data;
-            PermissionsService.setPermission('home',true)
-           $window.location.href = '#!/home';
-          //$route.reload();
+                        // $window.currentuser=data.data;
+                        PermissionsService.setPermission('home', true)
+                        $window.location.href = '#!/home';
+                        //$route.reload();
 
-        }
-      })
+                      }
+                    })
 
-              }
+                  }
 
-            }])} )
+                }])
+              })
 
-      .catch(() => {
-        swal.insertQueueStep({
-          type: 'error',
-          title: 'Unable to get your public IP'
-        })
-      })
-  }
-}])
+              .catch(() => {
+                swal.insertQueueStep({
+                  type: 'error',
+                  title: 'Unable to get your public IP'
+                })
+              })
+          }
+        }])
 
 
 
-}
+      }
 
-getip();
+      getip();
 
     }
 
 
     // NOTE: variable
-    this.success=false;
-    this.wrongpassword=false;
+    this.success = false;
+    this.wrongpassword = false;
 
 
-    this.changeUrl=function(){
-      PermissionsService.setPermission('signup',true)
+    this.changeUrl = function() {
+      PermissionsService.setPermission('signup', true)
     }
 
   },
   bindings: {},
-  template:`
+  template: `
     <section class="login-block" ng-show="!$ctrl.success">
       <div class="containerLogin">
         <div class="row">

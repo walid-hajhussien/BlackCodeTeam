@@ -17,7 +17,7 @@ angular.module('app').component('home', {
             type: 'error',
             title: 'Oops...',
             text: 'Your session has been End!',
-            preConfirm:()=>{
+            preConfirm: () => {
               $window.location.href = '#!/login';
             }
 
@@ -68,11 +68,11 @@ angular.module('app').component('home', {
     //this.user=$window.currentuser
 
     this.getposts = function() {
-      that=this
+      that = this
       retriveposts.set(function(data) {
         console.log(data.data[0]);
-        that.posts=data.data.slice()
-        that.mainposts=that.posts.slice()
+        that.posts = data.data.slice()
+        that.mainposts = that.posts.slice()
         console.log(that.posts);
       })
     }
@@ -119,7 +119,8 @@ angular.module('app').component('home', {
         availablity: post.availablity,
         date: new Date().toLocaleDateString(),
         status: 1,
-        userid: this.user[0].id
+        userid: this.user[0].id,
+        btnName: 'deactivate'
 
       }
       post.text = "";
@@ -216,19 +217,17 @@ angular.module('app').component('home', {
     <span class="input-group-btn">
       <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i> Search</button>
     </span>
-    <spam class="input-group-btn" >
+    <span class="input-group-btn" >
     <select class="btn btn-secondary dropdown-toggle select"
   ng-options="value.name for value in $ctrl.lists"
   ng-model="value" ng-change="$ctrl.changecategory(value)">
   <option value="">All category</option>
   </select>
+    </span>
 
-
-
-    </spam>
-    <spam class="input-group-btn" >
+    <span class="bounce input-group-btn" >
     <button class="btn btn-search addbutton" ng-click="$ctrl.showaddbutton=!$ctrl.showaddbutton"><i style="color:white" class="fa fa-plus fa-fw"></i></button>
-      </spam>
+      </span>
   </div>
 </div><br><br>
 

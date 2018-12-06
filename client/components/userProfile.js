@@ -1,10 +1,38 @@
 angular.module('app').component('userprofile', {
 
   // sweet alert message
-  controller: function () {
+  controller: function(checksession, userprofile) {
+    //get current user function
+    this.getuser = function() {
+      that = this
+
+      checksession.set(function(data) {
+        if (data.data != '0') {
+          that.user = data.data
+          that.retrivepostsbyid()
+          console.log(that.user);
+        } else {
+          Swal.queue([{
+            type: 'error',
+            title: 'Oops...',
+            text: 'Your session has been End!',
+            preConfirm: () => {
+              $window.location.href = '#!/login';
+            }
+
+          }])
+
+        }
+      })
+    }
+    this.getuser();
+
+    this.user;
+
+
 
     var that = this;
-    this.sweetalertClick = function (post) {
+    this.sweetalertClick = function(post) {
 
       // if the post.satsus is activa
       if (post) {
@@ -27,7 +55,7 @@ angular.module('app').component('userprofile', {
       }
     }
 
-    this.activatBtn = function (post) {
+    this.activatBtn = function(post) {
 
       post.status = !post.status;
       if (post.status) {
@@ -36,6 +64,21 @@ angular.module('app').component('userprofile', {
         post.btnName = 'activate';
       }
     }
+
+    // retriveposts
+
+    this.retrivepostsbyid = function() {
+      var userid = this.user[0]
+      that = this
+      userprofile.set(userid, function(data) {
+        that.posts = data.data
+        console.log('data', data.data);
+
+
+      })
+    }
+
+
     // NOTE: posts category
     this.category = {
       0: 'furniture',
@@ -66,6 +109,8 @@ angular.module('app').component('userprofile', {
       5: 'image/somthing to eat.png',
       6: 'image/reading for everyone.jpg'
     }
+
+
     // NOTE: all user posts
     this.posts = [{
         image: 0,
@@ -260,7 +305,7 @@ angular.module('app').component('userprofile', {
                         <tbody>
                           <tr>
                             <td>{{post.phone}}</td>
-                            <td>{{post.condition}}</td>
+                            <td>{{post.cond}}</td>
                             <td>{{post.availablity}} day </td>
                           </tr>
                         </tbody>

@@ -1,10 +1,10 @@
 angular.module('app').component('signup', {
 
 
-  controller: function (signup,$location,$window) {
+  controller: function(signup, $location, $window) {
 
 
-    this.signup = function (input) {
+    this.signup = function(input) {
       var newInput = {
         firstName: input.firstName,
         lastName: input.lastName,
@@ -22,12 +22,12 @@ angular.module('app').component('signup', {
       input.password = "";
       that = this
 
-      signup.set(newInput, function (data) {
+      signup.set(newInput, function(data) {
         if (data.data == '1') {
           Swal.queue([{
             type: 'success',
             title: 'you have successfully registered',
-            preConfirm:()=>{
+            preConfirm: () => {
               $window.location.href = '#!/login';
             }
 
