@@ -1,10 +1,10 @@
 angular.module('app').component('signup', {
 
 
-  controller: function (signup,$location,$window) {
+  controller: function(signup, $location, $window) {
 
 
-    this.signup = function (input) {
+    this.signup = function(input) {
       var newInput = {
         firstName: input.firstName,
         lastName: input.lastName,
@@ -22,10 +22,10 @@ angular.module('app').component('signup', {
       input.password = "";
       that = this
 
-      signup.set(newInput, function (data) {
+      signup.set(newInput, function(data) {
         if (data.data == '1') {
           that.success = true
-          $window.currentuser=data
+          $window.currentuser = data
           $window.location.href = '#!/home';
           that.alreadyuser = false
         } else {
@@ -44,7 +44,7 @@ angular.module('app').component('signup', {
 
   bindings: {},
   template: `
- <section class="signupform" ng-show="!$ctrl.success">
+ <section class=" signupform" ng-show="!$ctrl.success">
  <div class="container">
  <div class="signup-form">
  <div class="main-div">

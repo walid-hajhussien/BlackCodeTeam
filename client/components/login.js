@@ -1,9 +1,9 @@
 angular.module('app').component('login', {
-  controller:function(check,$http,$scope,PermissionsService,$location,$window){
+  controller: function(check, $http, $scope, PermissionsService, $location, $window) {
 
 
-//NOTE : login function
-    this.loginData = function(login){
+    //NOTE : login function
+    this.loginData = function(login) {
       var loginInfo = {
         username: login.username,
         password: login.password
@@ -12,20 +12,20 @@ angular.module('app').component('login', {
 
       login.username = "";
       login.password = "";
-      var that=this;
+      var that = this;
 
-      check.set(loginInfo,function(data){
+      check.set(loginInfo, function(data) {
         console.log(data);
-        if(data.data=='0' || data.data=='2'){
-          that.wrongpassword=true;
-        }else{
-          console.log('server data',data);
-          that.wrongpassword=false;
-            that.success=true;
-            // that.addcurrentuser(data.data);
-              $window.currentuser=data.data;
-            PermissionsService.setPermission('signup',true)
-           $window.location.href = '#!/home';
+        if (data.data == '0' || data.data == '2') {
+          that.wrongpassword = true;
+        } else {
+          console.log('server data', data);
+          that.wrongpassword = false;
+          that.success = true;
+          // that.addcurrentuser(data.data);
+          $window.currentuser = data.data;
+          PermissionsService.setPermission('signup', true)
+          $window.location.href = '#!/home';
           //$route.reload();
 
         }
@@ -36,16 +36,16 @@ angular.module('app').component('login', {
     }
 
     // NOTE: variable
-    this.success=false;
-    this.wrongpassword=false;
+    this.success = false;
+    this.wrongpassword = false;
 
-    this.changeUrl=function(){
-      PermissionsService.setPermission('signup',true)
+    this.changeUrl = function() {
+      PermissionsService.setPermission('signup', true)
     }
 
   },
   bindings: {},
-  template:`
+  template: `
     <section class="login-block" ng-show="!$ctrl.success">
       <div class="containerLogin">
         <div class="row">

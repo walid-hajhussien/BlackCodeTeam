@@ -465,3 +465,159 @@ section .section-title {
 }
 
 /*End Footer section */
+/****** animation start *******/
+main.ng-enter {
+  transition: 0.5s linear all;
+  opacity: 0;
+}
+
+main.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+main.ng-leave {
+  transition: 0.5s linear all;
+  opacity: 1;
+}
+
+main.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+form .ng-enter {
+  transition: 0.5s linear all;
+  opacity: 0;
+}
+
+form.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+.bounce {
+  -moz-animation: bounce 3s infinite;
+  -webkit-animation: bounce 3s infinite;
+  animation: bounce 3s infinite;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s
+}
+
+@-moz-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    -moz-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+
+  60% {
+    -moz-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+
+  60% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    -moz-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+
+  60% {
+    -moz-transform: translateY(-15px);
+    -ms-transform: translateY(-15px);
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+
+.bouncedelay {
+  animation: bouncedelay 14s infinite cubic-bezier(0.85, 0.04, 0, 1.35) both;
+}
+
+.bouncedelay {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s
+}
+
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0)
+  }
+
+  40% {
+    -webkit-transform: scale(1)
+  }
+}
+
+@keyframes bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0)
+  }
+
+  40% {
+    transform: scale(1);
+    -webkit-transform: scale(1)
+  }
+}
+
+.bouncedelay {
+  animation: bouncedelay 14s infinite cubic-bezier(0.85, 0.04, 0, 1.35) both;
+}
+
+.bouncedelay {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s
+}
+
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0)
+  }
+
+  40% {
+    -webkit-transform: scale(1)
+  }
+}
+
+@keyframes bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0)
+  }
+
+  40% {
+    transform: scale(1);
+    -webkit-transform: scale(1)
+  }
+}
+
+/****** animation end *******/
