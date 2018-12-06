@@ -192,7 +192,9 @@ angular.module('app').component('userprofile', {
 
   },
   bindings: {},
-  template: `<section class="userProfileSection">
+  template: `
+<header></header>
+  <section class="userProfileSection">
     <div class="container">
       <div id="custom-search-input">
         <div class="input-group ">

@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var dbConnection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: '12345678',
+  password: '19919901',
   insecureAuth: true,
   database: 'chat'
 });
@@ -73,4 +73,3 @@ dbConnection.query(queryPostsTable, function(err, result) {
 
 
 module.exports.db = dbConnection;
-
