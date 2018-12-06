@@ -3,11 +3,11 @@ var mysql = require('mysql');
 
 //Note: to insert tht the database credential
 var dbConnection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: '19919901',
+  host: "us-cdbr-iron-east-01.cleardb.net",
+  user: "ba8ca36afca931",
+  password: '2e7cb6ba',
   insecureAuth: true,
-  database: 'chat'
+  database: 'heroku_2de4345a1bfca38'
 });
 
 //Note:create the connection
