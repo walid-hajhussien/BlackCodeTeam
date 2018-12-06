@@ -1,6 +1,42 @@
 angular.module('app').component('header', {
 
-  controller: function() {
+  controller: function($window,deletesession,PermissionsService) {
+    // NOTE: veriable
+
+
+
+    // NOTE: function :
+
+
+
+    // for remove session
+    this.removesession = function() {
+      deletesession.set(function(data) {
+        if (data.data == '1') {
+
+          Swal.queue([{
+            type: 'error',
+            title: 'logged out',
+            text: 'You have been successfully logged out!',
+            preConfirm: () => {
+              $window.location.href = '#!/login';
+            }
+
+          }])
+
+        }
+      })
+
+
+    }
+
+// to give permission to the required page
+this.givepermission=function(page){
+    PermissionsService.setPermission(page, true)
+    $window.location.href = '#!/'+page;
+}
+
+
 
   },
 
@@ -10,87 +46,12 @@ angular.module('app').component('header', {
   template: `
 
   <ul id="ul2">
-    <li class="li2"><a class="active" href="#!/enter">Home</a></li>
-    <li class="li2"><a href="">News</a></li>
-    <li class="li2"><a href="">Contact</a></li>
-    <li class="li2"><a href="#!/home">About</a></li>
-    <li id="logout" class="li2" ng-click="go2()"><a href="#!/login">logout</a></li>
+    <li class="li2" ng-click="$ctrl.givepermission('home')"><a class="active" href="">Home</a></li>
+    <li class="li2"><a href="">Profile</a></li>
+    <li class="li2" ng-click="$ctrl.givepermission('aboutus')"><a href="">About</a></li>
+    <li class="li2" ng-click="$ctrl.givepermission('contact')"><a href="">Contact</a></li>
+    <li id="logout" class="li2" ng-click="$ctrl.removesession()"><a href="">logout</a></li>
   </ul>
-
-  <div class="card" style="width: 18rem; display: inline-block;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <p>Name</p>
-    <a href="#" class="btn btn-primary">Show</a>
-  </div>
-</div>
-
-
-
-<div class="card" style="width: 18rem;display: inline-block;">
-<img class="card-img-top" src="..." alt="Card image cap">
-<div class="card-body">
-  <h5 class="card-title">Card title</h5>
-  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  <p>Name</p>
-  <a href="#" class="btn btn-primary">Show</a>
-</div>
-</div>
-
-<div class="card" style="width: 18rem;display: inline-block;">
-<img class="card-img-top" src="..." alt="Card image cap">
-<div class="card-body">
-  <h5 class="card-title">Card title</h5>
-  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  <p>Name</p>
-  <a href="#" class="btn btn-primary">Show</a>
-</div>
-</div>
-<br>
-<div class="card" style="width: 18rem;display: inline-block;">
-<img class="card-img-top" src="..." alt="Card image cap">
-<div class="card-body">
-  <h5 class="card-title">Card title</h5>
-  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  <p>Name</p>
-  <a href="#" class="btn btn-primary">Show</a>
-</div>
-</div>
-
-
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-  </div>
-</div>
-
-</br>
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-  </div>
-</div>
 
 `
 

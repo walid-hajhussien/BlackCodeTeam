@@ -3,43 +3,80 @@ angular.module('app').component('login', {
 
 
 //NOTE : login function
-    this.loginData = function(login,$scope){
+
+    this.loginData = function(login){
       var loginInfo = {
         username: login.username,
         password: login.password
       }
 
-      login.username = "";
-      login.password = "";
-      var that=this;
+//using sweat alert
+var that=this;
+var getip= function(cb){
+  const ipAPI = 'https://api.ipify.org?format=json'
 
+  swal.queue([{
+  title: 'Public IP',
+  confirmButtonText: 'Get my public IP',
+  text:
+    'Your public IP is Requered to Login ',
+  showLoaderOnConfirm: true,
+  preConfirm: () => {
+    return fetch(ipAPI)
+      .then(response => response.json())
+      .then(data1 => { return swal.queue([{
+              confirmButtonText: 'ok',
+              title: 'Your public IP '+data1.ip,
+              preConfirm: () => {
+                      login.username = "";
+                      login.password = "";
+                      loginInfo.ip=data1.ip;
+
+      // sent the information to the server
       check.set(loginInfo,function(data){
         console.log(data);
         if(data.data=='0' || data.data=='2'){
           that.wrongpassword=true;
         }else{
+          console.log('server data',data);
           that.wrongpassword=false;
             that.success=true;
-           // PermissionsService.setPermission('signup',true)
-           // $window.location.href = '#!/signup';
-           // $route.reload();
+
+             // $window.currentuser=data.data;
+            PermissionsService.setPermission('home',true)
+           $window.location.href = '#!/home';
+          //$route.reload();
 
         }
       })
 
+              }
 
+            }])} )
+
+      .catch(() => {
+        swal.insertQueueStep({
+          type: 'error',
+          title: 'Unable to get your public IP'
+        })
+      })
+  }
+}])
+
+
+
+}
+
+getip();
 
     }
+
 
     // NOTE: variable
     this.success=false;
     this.wrongpassword=false;
 
-    this.go=function(){
-      console.log('x',$scope.x);
-      $scope.x=true
-      console.log('x',$scope.x);
-    }
+
     this.changeUrl=function(){
       PermissionsService.setPermission('signup',true)
     }
@@ -82,7 +119,7 @@ angular.module('app').component('login', {
               <div class="row">
                 <div class="col-md-4 login-sec">
                   <h2 class="text-center" style="color:green">Login Successfull</h2>
-                        <a><button class="btn btn-success btn-lg buttonEnter" ng-click="$ctrl.go()">Enter</button></a>
+                        <a href="#!/home"><button class="btn btn-success btn-lg buttonEnter" ng-click="$ctrl.go()">Enter</button></a>
                       </div>
                       <div class="col-md-8 banner-sec">
                       </div>
