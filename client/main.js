@@ -18,6 +18,9 @@ app.config(['$routeProvider', function($routeProvider) {
     .when('/contact', {
       template: '<contact></contact>'
     })
+    .when('/userprofile', {
+      template: '<userprofile></userprofile>'
+    })
     .otherwise({
       redirectTo: '/login'
     })
@@ -25,16 +28,41 @@ app.config(['$routeProvider', function($routeProvider) {
 }])
 
 //NOTE : the below will be run after run the app
-app.run(['$rootScope', '$location', 'PermissionsService', function($rootScope, $location, PermissionsService) {
+app.run(['$rootScope', '$location', 'PermissionsService', 'checksession', function($rootScope, $location, PermissionsService, checksession) {
 
   $rootScope.$on("$routeChangeStart", function(event, next, current) {
-    if (next.template === "<signup></signup>") {
-      if (!PermissionsService.getPermission('signup')) {
+    if (next.template === "<login></login>") {
+      checksession.set(function(data) {
+        if (data.data == '0' || data.data == '3') {
+
+        } else {
+          PermissionsService.setPermission('home', true)
+          $location.path('/home');
+        }
+      })
+
+    } else if (next.template === "<home></home>") {
+      if (!PermissionsService.getPermission('home')) {
         $location.path('/');
       }
-      PermissionsService.setPermission('signup', false);
-    } else if (next.template === "<login></login>") {
+      PermissionsService.setPermission('home', false);
 
+    } else if (next.template === "<aboutus></aboutus>") {
+      if (!PermissionsService.getPermission('aboutus')) {
+        $location.path('/');
+      }
+      PermissionsService.setPermission('aboutus', false);
+
+    } else if (next.template === "<contact></contact>") {
+      if (!PermissionsService.getPermission('contact')) {
+        $location.path('/');
+      }
+      PermissionsService.setPermission('contact', false);
+    } else if (next.template === "<userprofile></userprofile>") {
+      if (!PermissionsService.getPermission('userprofile')) {
+        $location.path('/');
+      }
+      PermissionsService.setPermission('userprofile', false);
     }
   });
 

@@ -1,9 +1,34 @@
 angular.module('app').component('home', {
 
-  controller: function($window, addpost, retriveposts) {
+  controller: function($window, addpost, retriveposts, checksession) {
+    // controller function :
+    this.user;
+
+    //get current user function
+    this.getuser = function() {
+      that = this
+
+      checksession.set(function(data) {
+        if (data.data != '0') {
+          that.user = data.data
+          console.log(that.user);
+        } else {
+          Swal.queue([{
+            type: 'error',
+            title: 'Oops...',
+            text: 'Your session has been End!',
+            preConfirm: () => {
+              $window.location.href = '#!/login';
+            }
+
+          }])
+
+        }
+      })
+    }
+    this.getuser();
+
     // NOTE: sweetalert show button
-
-
     this.sweetalert = async function(post) {
       console.log(post);
       const {
@@ -38,7 +63,8 @@ angular.module('app').component('home', {
     // NOTE: variable
     this.showaddbutton = false
 
-    this.user = $window.currentuser
+
+    //this.user=$window.currentuser
 
     this.getposts = function() {
       retriveposts.set(function(data) {
@@ -99,17 +125,22 @@ angular.module('app').component('home', {
     this.mainposts = this.posts.slice();
     // NOTE:the below function for category filter
     this.changecategory = function(value) {
-      this.mainposts = this.posts.slice()
-      var array = [];
-      for (var i = 0; i < this.mainposts.length; i++) {
-        if (this.category[this.mainposts[i].category] == value.name) {
-          array.push(this.mainposts[i])
+      if (value) {
+        this.mainposts = this.posts.slice()
+        var array = [];
+        for (var i = 0; i < this.mainposts.length; i++) {
+          if (this.category[this.mainposts[i].category] == value.name) {
+            array.push(this.mainposts[i])
+          }
         }
+        this.mainposts = array.slice()
+      } else {
+        this.mainposts = this.posts.slice()
       }
-      this.mainposts = array.slice()
     }
     //new Date().toLocaleDateString()
     this.add = function(post) {
+
       var defualt = this.category[post.category.name]
       var postData = {
         image: defualt,
@@ -124,7 +155,7 @@ angular.module('app').component('home', {
         availablity: post.availablity,
         date: new Date().toLocaleDateString(),
         status: 1,
-        userid: $window.currentuser[0].id
+        userid: this.user[0].id
 
       }
       post.text = "";
@@ -238,7 +269,7 @@ angular.module('app').component('home', {
 <div class="bouncedelay container homeform" ng-show="$ctrl.showaddbutton">
 <form ng-submit="$ctrl.add(post)" >
  <div class="form-group" class="homeformelement">
-  <input type="text" class="form-control homeforminput"  placeholder="Title...." ng-model="post.title"></br>
+  <input type="text" class="form-control homeforminput"  placeholder="Title...." ng-model="post.title" ng-maxlength="9"></br>
   <input type="number" class="form-control homeforminput"  placeholder="Availablity in days...." ng-model="post.availablity"></br>
 
   <span class="input-group-btn" >

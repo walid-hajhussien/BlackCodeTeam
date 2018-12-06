@@ -1,7 +1,13 @@
 angular.module('app').service('PermissionsService', function() {
 
   var permissions = {
-    signup: false
+    login:false,
+    signup: false,
+    home:false,
+    aboutus:false,
+    contact:false,
+    userprofile:false
+
   };
 
   this.setPermission = function(permission, value) {

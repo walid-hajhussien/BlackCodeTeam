@@ -1,8 +1,10 @@
 angular.module('app').component('aboutus', {
 
-  controller: function() {
+  controller: function($window,PermissionsService) {
 
-    this.aboutus = function() {
+    this.givepermission = function() {
+        PermissionsService.setPermission('contact', true)
+          $window.location.href = '#!/contact';
 
     }
 
@@ -12,13 +14,7 @@ angular.module('app').component('aboutus', {
 
   bindings: {},
 
-  // Establish a mission statement. ...
-  // Outline your company story. ...
-  // Reveal how you've evolved. ...
-  // State your "aha!" ...
-  // Explain who you serve. ...
-  // Explain what you're offering them. ...
-  // Cite examples of who you've served.
+
   template: `
   <header></header>
 	<section id="what-we-do">
@@ -81,7 +77,7 @@ angular.module('app').component('aboutus', {
 						<div class="card-block block-6">
 							<h3 class="card-title">Contact Us</h3>
 							<p class="card-text">we'll love to hear from you , if you have any ideas or comments , whether you need a help or going to help just hit the button.</p>
-              <a href="#!/contact" title="Read more" class="read-more" >Contact Us<i class="fa fa-angle-double-right ml-2"></i></a>
+              <a href="" title="Read more" class="read-more" ng-click="$ctrl.givepermission()">Contact Us<i class="fa fa-angle-double-right ml-2"></i></a>
 						</div>
 					</div>
 				</div>
