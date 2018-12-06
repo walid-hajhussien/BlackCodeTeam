@@ -14,7 +14,9 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(id, done) {
   var query = `select * from credential where id=\"${id}\"`
   dbConnection.db.query(query, function(err, data) {
-    if(err){return done(null,err)}
+    if (err) {
+      return done(null, err)
+    }
     done(null, data[0]);
   })
 
@@ -47,13 +49,13 @@ router.route('/login')
             if (data) {
               //create the session
               var userId = result[0].id
-              var user=result[0]
+              var user = result[0]
               console.log(userId)
 
 
 
               req.login(user, function(done) {
-                req.session.cookie.expires=3600000;
+                req.session.cookie.expires = 3600000;
                 res.send(result)
               })
 
@@ -104,6 +106,7 @@ router.route('/signup')
           if (result) {
             res.send("1")
           } else {
+            console.log(err);
             res.send("0")
           }
         })
@@ -115,8 +118,8 @@ router.route('/signup')
 router.route('/deletesession')
 
   .get(function(req, res) {
-        req.session.destroy();
-        res.send('1')
+    req.session.destroy();
+    res.send('1')
   });
 
 // NOTE: to check the user session
@@ -140,11 +143,19 @@ router.route('/checkSession')
 
   })
 
-router.route('/z')
+router.route('/userprofile')
   // NOTE: when user get somthing from the signup
-  .get(function(req, res) {
-    req.session.destroy()
-    res.send('done')
+  .post(function(req, res) {
+    var id = req.body.id
+    query = `select * from posts where userid=\"${id}\"`
+    dbConnection.db.query(query, function(err, result) {
+      if (result) {
+        res.send(result)
+      } else {
+        res.send("3")
+      }
+    })
+
   })
 // api https://ident.me/  ,https://api.ipify.org/
 
@@ -164,12 +175,13 @@ router.route('/addpost')
     var availablity = req.body.availablity;
     var date = req.body.date;
     var status = req.body.status;
+    var btnName = req.body.btnName;
     console.log(req.body);
 
     // NOTE: Query to insert the post information
     var query = `insert into posts values
     (null,\"${userid}\",\"${image}\",\"${color}\",\"${category}\",\"${title}\",\"${description}\",\"${name}\"
-  ,\"${phone}\",\"${Email}\",\"${condition}\",\"${availablity}\",\"${date}\",\"${status}\")`
+  ,\"${phone}\",\"${Email}\",\"${btnName}\",\"${condition}\",\"${availablity}\",\"${date}\",\"${status}\")`
 
     // NOTE: insert post information to the database
     dbConnection.db.query(query, function(err, result) {
@@ -197,14 +209,16 @@ router.route('/contact')
 // NOTE: retriveposts
 router.route('/retriveposts')
   .get(function(req, res) {
-var query = `select * from posts where status=1`
-dbConnection.db.query(query, function(err, result) {
-  if (result) {
-    res.send(result)
-  } else {
-    res.send("0")
-  }
-})
+
+    var query = `select * from posts where status=1`
+    dbConnection.db.query(query, function(err, result) {
+      if (result) {
+        res.send(result)
+      } else {
+        res.send("0")
+      }
+    })
+
 
 
 

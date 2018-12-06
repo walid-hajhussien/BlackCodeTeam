@@ -13,7 +13,7 @@ var dbConnection = mysql.createConnection({
 //Note:create the connection
 dbConnection.connect(function(err) {
   if (err) {
-    console.log('access dinay to the database')
+    console.log('access dinay to the database', err)
   } else {
     console.log('database has been connected')
   }
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS credential (
 );
 `
 
-var queryPostsTable=`
+var queryPostsTable = `
 CREATE TABLE IF NOT EXISTS posts (
   id INTEGER NOT NULL AUTO_INCREMENT ,
   userid INTEGER NOT NULL,
@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS posts (
   name text Not Null,
   phone text Not Null,
   email text Not Null,
+  btnName text Not Null,
   cond text Not Null,
   availablity INTEGER Not Null,
   date text Not Null,

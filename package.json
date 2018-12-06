@@ -19,6 +19,7 @@
   "homepage": "https://github.com/walid-hajhussien/BlackCodeTeam#readme",
   "dependencies": {
     "angular": "^1.7.5",
+    "angular-animate": "^1.7.5",
     "angular-route": "^1.7.5",
     "bcrypt": "^3.0.2",
     "body-parse": "^0.1.0",
