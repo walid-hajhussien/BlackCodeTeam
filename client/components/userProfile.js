@@ -5,6 +5,7 @@ angular.module('app').component('userprofile', {
 
     var that = this;
     this.sweetalertClick = function (post) {
+
       // if the post.satsus is activa
       if (post) {
         swal("warning!", "You should Deactivat the Post first!", "warning");
@@ -19,9 +20,10 @@ angular.module('app').component('userprofile', {
       if (post.status) {
         that.sweetalertClick(post.status);
       } else {
+        that.sweetalertClick(post.status)
         var deletedPost = this.posts.indexOf(post);
         this.posts.splice(deletedPost, 1);
-        that.sweetalertClick(post.status);
+
       }
     }
 
@@ -209,15 +211,15 @@ angular.module('app').component('userprofile', {
             <div class="process-row">
               <div class="process-step">
                 <button type="button" class="btn btn-info fa fa-sort" ng-click="order = 'category'"></button>
-                <p>Sort by category</p>
+                <h6>Sort by category</h6>
               </div>
               <div class="process-step">
                 <button type="button" class="btn btn-danger fa fa-sort" ng-click="order = 'availability'"></button>
-                <p>Sort by availability</p>
+                <h6>Sort by availability</h6>
               </div>
               <div class="process-step">
-                <button type="button" class="btn btn-success fa fa-calendar" ng-click="order = 'date'"></button>
-                <p>Sort by date</p>
+                <button type="button" class="btn btn-warning fa fa-calendar" ng-click="order = 'date'"></button>
+                <h6>Sort by date</h6>
               </div>
             </div>
           </div>
@@ -265,16 +267,20 @@ angular.module('app').component('userprofile', {
                           <tr>
                             <thead>
                               <th>{{post.btnName}}</th>
-                              <th>Do you Need Delete the post</th>
+                              <th> Delete </th>
+                              <th> Update </th>
                             </thead>
                         <tbody>
                           <tr>
                             <td>
                               <button type="button" class="btn btn-info fa fa-check userprofileBtn" ng-click="$ctrl.activatBtn(post)" ng-show="!post.status"><i class="glyphicon glyphicon-ok"></i></button>
-                              <button type="button" class="btn btn-warning fa fa-remove userprofileBtn" ng-click="$ctrl.activatBtn(post)" ng-show="post.status"><i class="glyphicon glyphicon-remove"></i></button>
+                              <button type="button" class="btn btn-dark fa fa-remove userprofileBtn" ng-click="$ctrl.activatBtn(post)" ng-show="post.status"><i class="glyphicon glyphicon-remove"></i></button>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-danger fa fa-trash userprofileBtn" ng-click="$ctrl.deleteBtn(post)"><i class="fas fa-trash-alt"></i></button>
+                              <button type="button" class="btn btn-danger fa fa-trash userprofileBtn" ng-click="$ctrl.deleteBtn(post)"></button>
+                            </td>
+                            <td>
+                            <button type="button" class="btn btn-primary fa fa-edit userprofileBtn"></button>
                             </td>
                           </tr>
                         </tbody>
