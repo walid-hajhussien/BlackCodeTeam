@@ -798,4 +798,11 @@ form.ng-enter.ng-enter-active {
   opacity: 0.6;
 }
 
+.swal-wide {
+  width: 80% !important;
+  height: 80%;
+  background-color: black !important;
+  opacity: 0.8;
+}
+
 /**** End main page section ****/
