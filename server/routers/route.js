@@ -243,24 +243,24 @@ router.route('/retriveposts')
         res.send("0")
       }
     })
-
-  // NOTE: retriveuser
-
-    router.route('/retriveuser')
-    .get(function(req, res) {
-
-      var query = `select * from ip `
-      dbConnection.db.query(query, function(err, result) {
-        if (result) {
-          console.log('result',result)
-          res.send(result)
-        } else {
-          res.send("0")
-        }
-      })
-
-
-
   });
+
+
+  //retriveuser
+
+router.route('/retriveuser')
+.get(function(req, res) {
+
+  var query = `select * from ip `
+  dbConnection.db.query(query, function(err, result) {
+    if (result) {
+      console.log('result',result)
+      res.send(result)
+    } else {
+      res.send("0")
+    }
+  })
+
+});
 
 module.exports = router;
