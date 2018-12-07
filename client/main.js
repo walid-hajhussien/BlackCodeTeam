@@ -21,8 +21,11 @@ app.config(['$routeProvider', function($routeProvider) {
     .when('/userprofile', {
       template: '<userprofile></userprofile>'
     })
+    .when('/mainpage', {
+      template: '<mainpage></mainpage>'
+    })
     .otherwise({
-      redirectTo: '/login'
+      redirectTo: '/mainpage'
     })
 
 }])
