@@ -767,22 +767,35 @@ form.ng-enter.ng-enter-active {
   text-align: center;
 }
 
+#quote:hover {
+  background-color: antiquewhite;
+  cursor: pointer;
+}
+
+.loginsubmit:hover {
+  background-color: dimgray
+}
+
+.signupsubmit:hover {
+  background-color: dimgray
+}
+
 .loginsubmit {
   color: white;
-  background-color: #566573;
+  background-color: #C0392B;
   margin-top: 70px;
   margin-left: 235px;
   width: 250px;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .signupsubmit {
   color: white;
-  background-color: #566573;
+  background-color: #C0392B;
   margin-top: 70px;
   margin-left: 150px;
   width: 250px;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 /**** End main page section ****/
