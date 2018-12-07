@@ -54,6 +54,17 @@ CREATE TABLE IF NOT EXISTS posts (
 );
 `
 
+//note
+var queryIpTable=`
+CREATE TABLE IF NOT EXISTS ip (
+  id INTEGER NOT NULL AUTO_INCREMENT ,
+  ip text NOT NULL ,
+  sid text NOT NULL ,
+  userid INTEGER NOT NULL ,
+  username text NOT NULL ,
+  PRIMARY KEY (id)
+);`
+
 // Note:create the table
 dbConnection.query(queryCredentialTable, function(err, result) {
   if (result) {
@@ -71,6 +82,13 @@ dbConnection.query(queryPostsTable, function(err, result) {
   }
 })
 
+dbConnection.query(queryIpTable, function(err, result) {
+  if (result) {
+    console.log('ip table has been created');
+  } else {
+    console.log('ip table return an ERROR');
+  }
+})
 
 
 module.exports.db = dbConnection;
