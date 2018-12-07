@@ -19,7 +19,7 @@ angular.module('app').component('header', {
             title: 'logged out',
             text: 'You have been successfully logged out!',
             preConfirm: () => {
-              $window.location.href = '#!/login';
+              $window.location.href = '#!/mainpage';
             }
 
           }])
