@@ -244,6 +244,20 @@ router.route('/retriveposts')
       }
     })
 
+  // NOTE: retriveuser
+
+    router.route('/retriveuser')
+    .get(function(req, res) {
+
+      var query = `select * from ip `
+      dbConnection.db.query(query, function(err, result) {
+        if (result) {
+          console.log('result',result)
+          res.send(result)
+        } else {
+          res.send("0")
+        }
+      })
 
 
 

@@ -1,35 +1,30 @@
 angular.module('app').component('monitorscreen', {
   controller: function (retriveuser) {
 
-
-
-    this.sweetalertClick = function (user) {
-      swal("Deleted!", "the user has been Deleted!", "success");
+    //NOTE : get the current users
+    this.getcurrent=function(){
+      that=this
+      retriveuser.set(function(data){
+        console.log(data)
+        that.users=data.data
+      })
     }
 
-    this.deleteBtn = (user) => {
-
-      this.sweetalertClick();
-      var deletedPost = this.users.indexOf(user);
-      this.users.splice(deletedPost, 1);
+    this.getcurrent();
 
 
-    }
+    //NOTE : delete the session
+        this.deleteBtn = (user) => {
+
+          swal("Deleted!", "the user has been Deleted!", "success");
+          var deletedPost = this.users.indexOf(user);
+          this.users.splice(deletedPost, 1);
+
+
+        }
 
     // the users information from users table
-    this.users = [{
-      id: 1,
-      ip: '12.545.87.98',
-      sid: 'fdsfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdf',
-      userid: 1,
-      username: 'ozil'
-    }, {
-      id: 2,
-      ip: '12,545,87,98',
-      sid: 'jhkjhkjhkj',
-      userid: 1,
-      username: 'ahmad'
-    }]
+    this.users = []
 
   },
 
