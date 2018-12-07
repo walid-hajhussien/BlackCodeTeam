@@ -357,7 +357,7 @@ section .section-title {
 }
 
 #logout {
-  padding-left: 1000px;
+  padding-left: 950px;
 }
 
 /*End Header*/
@@ -806,3 +806,20 @@ form.ng-enter.ng-enter-active {
 }
 
 /**** End main page section ****/
+/***** monitorscreen start ****/
+.form-control-borderless {
+  border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.monitorscreenhoverColorTable {
+  background-color: lightgreen;
+  color: black;
+}
+
+/***** monitorscreen end ****/

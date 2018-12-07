@@ -50,6 +50,7 @@ this.givepermission=function(page){
     <li class="li2" ng-click="$ctrl.givepermission('userprofile')"><a href="">Profile</a></li>
     <li class="li2" ng-click="$ctrl.givepermission('aboutus')"><a href="">About</a></li>
     <li class="li2" ng-click="$ctrl.givepermission('contact')"><a href="">Contact</a></li>
+    <li ng-if="1" class="li2" ng-click="$ctrl.givepermission('monitorscreen')"><a href="">Monitor</a></li>
     <li id="logout" class="li2" ng-click="$ctrl.removesession()"><a href="">logout</a></li>
   </ul>
 
