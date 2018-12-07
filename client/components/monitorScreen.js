@@ -1,30 +1,32 @@
 angular.module('app').component('monitorscreen', {
-  controller: function (retriveuser) {
+  controller: function (retriveuser,deleteip) {
 
-    //NOTE : get the current users
-    this.getcurrent=function(){
+//NOTE : get the current users
+this.getcurrent=function(){
+  that=this
+  retriveuser.set(function(data){
+    console.log(data)
+    that.users=data.data
+  })
+}
+
+this.getcurrent();
+
+//NOTE : delete the session
+    this.deleteBtn = (user) => {
       that=this
-      retriveuser.set(function(data){
-        console.log(data)
-        that.users=data.data
-      })
+        deleteip.set(user,function(data){
+          if(data.data==1){
+              swal("Deleted!", "the user has been Deleted!", "success");
+              var deletedPost = that.users.indexOf(user);
+              that.users.splice(deletedPost, 1);
+          }
+        })
+
     }
 
-    this.getcurrent();
-
-
-    //NOTE : delete the session
-        this.deleteBtn = (user) => {
-
-          swal("Deleted!", "the user has been Deleted!", "success");
-          var deletedPost = this.users.indexOf(user);
-          this.users.splice(deletedPost, 1);
-
-
-        }
-
     // the users information from users table
-    this.users = []
+    this.users = [];
 
   },
 
@@ -66,7 +68,7 @@ angular.module('app').component('monitorscreen', {
         </thead>
           <tbody ng-repeat="(key, user) in $ctrl.users | orderBy:'id' | filter:search track by $index">
             <tr>
-              <th scope="row"> {{user.id}}</th>
+              <th scope="row"> {{user.userid}}</th>
               <td>{{user.username}}</td>
               <td>{{user.sid}}</td>
               <td>{{user.ip}}</td>

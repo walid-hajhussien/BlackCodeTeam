@@ -263,4 +263,30 @@ router.route('/retriveuser')
 
 });
 
+// NOTE: deleteip
+  router.route('/deleteip')
+  .post(function(req, res) {
+    var userid=req.body.userid;
+    var sid=req.body.sid;
+    console.log('ip',req.body);
+    var query1 = `delete from ip where userid=\"${userid}\"`
+    var query2 = `delete from sessions where  session_id=\"${sid}\"`
+    dbConnection.db.query(query1, function(err, result) {
+      if (result) {
+        console.log('result1',result)
+        dbConnection.db.query(query2, function(err, data) {
+          if (data) {
+            console.log('result2',data)
+            res.send('1')
+          } else {
+            res.send("0")
+          }
+        })
+      } else {
+        res.send("0")
+      }
+    })
+  });
+
+
 module.exports = router;
