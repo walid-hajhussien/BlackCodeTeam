@@ -27,6 +27,7 @@ app.config(['$routeProvider', function($routeProvider) {
     .when('/monitorscreen', {
       template: '<monitorscreen></monitorscreen>'
     })
+
     .otherwise({
       redirectTo: '/mainpage'
     })
