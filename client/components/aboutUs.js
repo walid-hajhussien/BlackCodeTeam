@@ -2,19 +2,20 @@ angular.module('app').component('aboutus', {
 
   controller: function($window,PermissionsService) {
 
+  //NOTE: giving Permissions only to logged in clients
     this.givepermission = function() {
         PermissionsService.setPermission('contact', true)
           $window.location.href = '#!/contact';
 
     }
 
-    //NOTE : variable
+   
 
   },
 
   bindings: {},
 
-
+  //NOTE: template has no functionality only describes our project
   template: `
   <header></header>
 	<section id="what-we-do">

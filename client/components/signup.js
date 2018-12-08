@@ -3,6 +3,7 @@ angular.module('app').component('signup', {
 
   controller: function(signup, $location, $window) {
 
+    //NOTE: Getting the sign up information from the sign up page
 
     this.signup = function(input) {
       var newInput = {
@@ -14,6 +15,9 @@ angular.module('app').component('signup', {
         password: input.password,
         available: true
       }
+
+     //NOTE: emptying the the signup fields after submitting 
+      
       input.firstName = "";
       input.lastName = "";
       input.phoneNumber = "";
@@ -22,6 +26,7 @@ angular.module('app').component('signup', {
       input.password = "";
       that = this
 
+//NOTE: using the signup service to post data to the server
       signup.set(newInput, function(data) {
         if (data.data == '1') {
           Swal.queue([{
@@ -33,7 +38,7 @@ angular.module('app').component('signup', {
 
           }])
 
-
+           //NOTE: checking if the user already signed up previously
           that.alreadyuser = false
         } else {
           that.alreadyuser = true
@@ -43,7 +48,7 @@ angular.module('app').component('signup', {
 
     }
 
-    //NOTE : variable
+ 
 
 
     this.alreadyuser = false;

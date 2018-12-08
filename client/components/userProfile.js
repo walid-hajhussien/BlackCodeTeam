@@ -162,7 +162,7 @@ angular.module('app').component('userprofile', {
             </div>
           </div>
             <ul>
-              <li ng-repeat="(key ,post) in $ctrl.posts | orderBy:'-date' | filter:search | orderBy:order">
+              <li ng-repeat="(key ,post) in $ctrl.posts | orderBy:'-date' | filter:search | orderBy:order track by $index">
                 <div class="post" style="border: 5px solid {{$ctrl.color[post.color]}}">
                   <div class="post-img-content">
                     <p align="center"><img ng-src={{$ctrl.image[post.image]}} class="img-responsive" /></p>

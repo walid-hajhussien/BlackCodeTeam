@@ -2,7 +2,7 @@ angular.module('app').component('mainpage', {
 
   controller: function() {
 
-
+// show the logo video 
     this.show = function() {
       Swal({
  customClass: 'swal-wide',

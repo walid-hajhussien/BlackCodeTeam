@@ -1,15 +1,11 @@
 angular.module('app').component('header', {
 
   controller: function($window,deletesession,PermissionsService) {
-    // NOTE: veriable
 
 
 
-    // NOTE: function :
 
-
-
-    // for remove session
+     // NOTE: to delete the sessions
     this.removesession = function() {
       deletesession.set(function(data) {
         if (data.data == '1') {
@@ -30,7 +26,7 @@ angular.module('app').component('header', {
 
     }
 
-// to give permission to the required page
+// NOTE:  to give permission to the required page
 this.givepermission=function(page){
     PermissionsService.setPermission(page, true)
     $window.location.href = '#!/'+page;

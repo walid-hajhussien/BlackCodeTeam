@@ -1,10 +1,12 @@
 angular.module('app').component('contact', {
   controller:function(contact){
-
+// NOTE: to inform the client using sweet alert
            this.sweetalertClick = function(){
            swal("Thanks For Feedback!", "Your message is receved!", "success")
 
    }
+
+   // NOTE: getting the feedback from the client
     this.contactMsg = function(feedback){
       var contactObj= {
         name: feedback.name,

@@ -17,11 +17,13 @@ describe('Server Test', function () {
   })
 
 
+
   describe('Get Test', function () {
     // recived obj when request data
     it('we should recived an object "/user"', function (done) {
-      request('http://127.0.0.1:4000').get('/user/').expect(200).end(function (err, res) {
-        chai.assert.typeOf(res.body, 'object')
+      request('http://127.0.0.1:4000').get('/user/retriveposts').expect(200).end(function (err, res) {
+        
+        chai.assert.typeOf(res.body[0], 'object')
         done()
       })
     })
@@ -39,25 +41,39 @@ describe('Server Test', function () {
         username: 'test',
         password: '123'
       }).end(function (err, res) {
-
+          console.log('rejecster',res.text)
         chai.assert.equal(res.text, '1')
         done()
 
       })
     })
     //NOTE : login user
-    it('should login with user credintial ', function (done) {
+    it('should not login with wrong credintial ', function (done) {
+      request('http://127.0.0.1:4000').post('/user/login').expect(200).send({
+        username: 'yyyyyy',
+        password: '123'
+
+      }).end(function (err, res) {
+          console.log('ssssssss',res.text)
+        chai.assert.equal(res.text, '0')
+        done()
+      })
+
+    })
+
+        it('should  login with correct credintial ', function (done) {
       request('http://127.0.0.1:4000').post('/user/login').expect(200).send({
         username: 'test',
         password: '123'
 
       }).end(function (err, res) {
-
-        chai.assert.equal(res.text, '1')
+          console.log('text',res.text)
+        chai.assert.typeOf(res.body[0], 'object')
         done()
       })
 
     })
+
 
   })
 })
@@ -115,3 +131,4 @@ describe('Database Test', function () {
 
   })
 })
+

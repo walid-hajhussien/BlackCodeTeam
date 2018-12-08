@@ -1,10 +1,10 @@
 angular.module('app').component('home', {
 
   controller: function($window, addpost, retriveposts, checksession) {
-    // controller function :
+     // NOTE: current user
     this.user;
 
-    //get current user function
+    // NOTE: to get the current user 
     this.getuser = function() {
       that = this
 
@@ -28,7 +28,7 @@ angular.module('app').component('home', {
     }
     this.getuser();
 
-    // NOTE: sweetalert show button
+    // NOTE: sweetalert to show the post information
     this.sweetalert = async function(post) {
       console.log(post);
       const {
@@ -234,7 +234,7 @@ angular.module('app').component('home', {
 <div class="container homeform" ng-show="$ctrl.showaddbutton">
 <form ng-submit="$ctrl.add(post)" >
  <div class="form-group" class="homeformelement">
-  <input type="text" class="form-control homeforminput"  placeholder="Title...." ng-model="post.title" ng-maxlength="9"></br>
+  <input type="text" class="form-control homeforminput"  placeholder="Title...." ng-model="post.title" ></br>
   <input type="number" class="form-control homeforminput"  placeholder="Availablity in days...." ng-model="post.availablity"></br>
 
   <span class="input-group-btn" >
@@ -265,7 +265,7 @@ ng-model="post.condition" required style="background:white;color:black">
 
 
 <div class="allPost">
-<span  ng-repeat="(key ,post) in $ctrl.mainposts  | filter:search |orderBy:'-date'">
+<span  ng-repeat="(key ,post) in $ctrl.mainposts  | filter:search |orderBy:'-date' track by $index">
   <div ng-click="$ctrl.sweetalert(post)"  class="card homediv" style="width: 18rem; display: inline-block;">
   <img class="card-img-top imagePost" ng-src="{{$ctrl.image[post.image]}}" alt="Card image cap">
   <div class="card-body ">

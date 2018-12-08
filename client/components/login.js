@@ -10,7 +10,7 @@ angular.module('app').component('login', {
         password: login.password
       }
 
-      //using sweat alert
+      // get the user ip
       var that = this;
       var getip = function(cb) {
         const ipAPI = 'https://api.ipify.org?format=json'
@@ -42,10 +42,10 @@ angular.module('app').component('login', {
                         that.wrongpassword = false;
                         that.success = true;
 
-                        // $window.currentuser=data.data;
+                        
                         PermissionsService.setPermission('home', true)
                         $window.location.href = '#!/home';
-                        //$route.reload();
+                       
 
                       }
                     })
@@ -73,11 +73,11 @@ angular.module('app').component('login', {
     }
 
 
-    // NOTE: variable
+  
     this.success = false;
     this.wrongpassword = false;
 
-
+// NOTE: give permition to the requered page 
     this.changeUrl = function() {
       PermissionsService.setPermission('signup', true)
     }

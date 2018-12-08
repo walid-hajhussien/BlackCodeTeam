@@ -1,4 +1,4 @@
-
+//NOTE: using the signup service to post data to the server
 angular.module('app').service('signup', function ($http, $window) {
   this.set = function (data, cb) {
 
