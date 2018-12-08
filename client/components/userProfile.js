@@ -1,7 +1,7 @@
 angular.module('app').component('userprofile', {
 
   // sweet alert message
-  controller: function(checksession, userprofile) {
+  controller: function($window,checksession, userprofile,updatestatus,deletepost) {
     //get current user function
     this.getuser = function() {
       that = this
@@ -29,41 +29,52 @@ angular.module('app').component('userprofile', {
 
     this.user;
 
-
-
-    var that = this;
-    this.sweetalertClick = function(post) {
-
-      // if the post.satsus is activa
-      if (post) {
-        swal("warning!", "You should Deactivat the Post first!", "warning");
-      } else {
-        // post.status is deactivat
-        swal("Deleted!", "Your post is Deleted!", "success");
-      }
-    }
-
     // NOTE: take the indexOf of the post you want deleted then splice it
     this.deleteBtn = (post) => {
       if (post.status) {
-        that.sweetalertClick(post.status);
+        swal("warning!", "You should Deactivat the Post first!", "warning");
       } else {
-        that.sweetalertClick(post.status)
-        var deletedPost = this.posts.indexOf(post);
-        this.posts.splice(deletedPost, 1);
+      var that=this
+        deletepost.set(post,function(data){
+          if(data.data==1){
+            swal("Deleted!", "Your post is Deleted!", "success");
+            var deletedPost = that.posts.indexOf(post);
+            that.posts.splice(deletedPost, 1);
+
+          }else{
+
+          }
+
+        })
+
 
       }
     }
+
+
+
+
 
     this.activatBtn = function(post) {
+      console.log(post);
+        post.status = (post.status==0) ? 1:0;
+        that=this
+          console.log('pp',post);
+        updatestatus.set(post,function(data){
+            console.log('status',data);
+          if(data.data==1){
 
-      post.status = !post.status;
-      if (post.status) {
-        post.btnName = 'deactivat';
-      } else {
-        post.btnName = 'activate';
-      }
-    }
+            if (post.status) {
+              post.btnName = 'deactivat';
+            } else {
+              post.btnName = 'activate';
+            }
+          }else{
+
+          }
+        })
+}
+
 
     // retriveposts
 
@@ -112,127 +123,7 @@ angular.module('app').component('userprofile', {
 
 
     // NOTE: all user posts
-    this.posts = [{
-        image: 0,
-        color: 0,
-        category: 0,
-        title: 'Book Avilabe live alone',
-        description: 'Similarly, create split button dropdowns with virtually',
-        username: 'Ahmed',
-        phone: '0781501502',
-        condition: 'good',
-        availablity: 3,
-        contactInfo: 04754564654,
-        btnName: 'deactivate',
-        status: true,
-        date: '17/11/2018'
-      }, {
-        image: 6,
-        color: 6,
-        category: 6,
-        title: 'alone',
-        description: 'Similarly, create split button dropdowns with virtually',
-        username: 'Ahmed',
-        phone: '0781501502',
-        condition: 'good',
-        availablity: 2,
-        btnName: 'activate     ',
-        status: false,
-        date: '14/9/2018'
-      }, {
-        image: 1,
-        color: 1,
-        category: 1,
-        title: 'fork',
-        description: 'Similarly, create split button dropdowns with virtually',
-        username: 'Ahmed',
-        phone: '0781501502',
-        condition: 'good',
-        availablity: 4,
-        btnName: 'deactivat',
-        status: true,
-        date: '15/10/2018'
-      }, {
-        image: 6,
-        color: 6,
-        category: 6,
-        title: 'fork',
-        description: 'Similarly, create split button dropdowns with virtually',
-        username: 'Ahmed',
-        phone: '0781501502',
-        condition: 'good',
-        availablity: 5,
-        btnName: 'deactivat',
-        status: true,
-        date: '16/11/2018'
-      },
-      {
-        image: 6,
-        color: 6,
-        category: 6,
-        title: 'fork',
-        description: 'Similarly, create split button dropdowns with virtually',
-        username: 'Ahmed',
-        phone: '0781501502',
-        condition: 'good',
-        availablity: 5,
-        btnName: 'deactivat',
-        status: true,
-        date: '16/11/2018'
-      }, {
-        image: 6,
-        color: 6,
-        category: 6,
-        title: 'fork',
-        description: 'Similarly, create split button dropdowns with virtually',
-        username: 'Ahmed',
-        phone: '0781501502',
-        condition: 'good',
-        availablity: 5,
-        btnName: 'deactivat',
-        status: true,
-        date: '16/11/2018'
-      }, {
-        image: 6,
-        color: 6,
-        category: 6,
-        title: 'fork',
-        description: 'Similarly, create split button dropdowns with virtually',
-        username: 'Ahmed',
-        phone: '0781501502',
-        condition: 'good',
-        availablity: 5,
-        btnName: 'deactivat',
-        status: true,
-        date: '16/11/2018'
-      }, {
-        image: 6,
-        color: 6,
-        category: 6,
-        title: 'fork',
-        description: 'Similarly, create split button dropdowns with virtually',
-        username: 'Ahmed',
-        phone: '0781501502',
-        condition: 'good',
-        availablity: 5,
-        btnName: 'deactivat',
-        status: true,
-        date: '16/11/2018'
-      }, {
-        image: 6,
-        color: 6,
-        category: 6,
-        title: 'fork',
-        description: 'Similarly, create split button dropdowns with virtually',
-        username: 'Ahmed',
-        phone: '0781501502',
-        condition: 'good',
-        availablity: 5,
-        btnName: 'deactivat',
-        status: true,
-        date: '16/11/2018'
-      }
-    ];
+    this.posts = [];
 
 
   },
@@ -271,7 +162,7 @@ angular.module('app').component('userprofile', {
             </div>
           </div>
             <ul>
-              <li ng-repeat="post in $ctrl.posts | orderBy:'-date' | filter:search | orderBy:order">
+              <li ng-repeat="(key ,post) in $ctrl.posts | orderBy:'-date' | filter:search | orderBy:order">
                 <div class="post" style="border: 5px solid {{$ctrl.color[post.color]}}">
                   <div class="post-img-content">
                     <p align="center"><img ng-src={{$ctrl.image[post.image]}} class="img-responsive" /></p>

@@ -24,6 +24,10 @@ app.config(['$routeProvider', function($routeProvider) {
     .when('/mainpage', {
       template: '<mainpage></mainpage>'
     })
+    .when('/monitorscreen', {
+      template: '<monitorscreen></monitorscreen>'
+    })
+
     .otherwise({
       redirectTo: '/mainpage'
     })
@@ -66,6 +70,11 @@ app.run(['$rootScope', '$location', 'PermissionsService', 'checksession', functi
         $location.path('/');
       }
       PermissionsService.setPermission('userprofile', false);
+    } else if (next.template === "<monitorscreen></monitorscreen>") {
+      if (!PermissionsService.getPermission('monitorscreen')) {
+        $location.path('/');
+      }
+      PermissionsService.setPermission('monitorscreen', false);
     }
   });
 

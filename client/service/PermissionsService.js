@@ -6,7 +6,8 @@ angular.module('app').service('PermissionsService', function() {
     home:false,
     aboutus:false,
     contact:false,
-    userprofile:false
+    userprofile:false,
+    monitorscreen:false
 
   };
 

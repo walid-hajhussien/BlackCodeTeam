@@ -33,7 +33,7 @@ router.route('/login')
 
     var username = req.body.username;
     var password = req.body.password;
-    var ip = req.body.password;
+    var ip = req.body.ip;
     var query = `select * from credential where username=\"${username}\"`
     //NOTE: 0-->(No username) 1-->(password corect) 2-->(wrong password) 3-->(ERROR)
 
@@ -50,13 +50,27 @@ router.route('/login')
               //create the session
               var userId = result[0].id
               var user = result[0]
-              console.log(userId)
+              var username=result[0].username
+              console.log('User info-->',username)
 
 
 
               req.login(user, function(done) {
                 req.session.cookie.expires = 3600000;
-                res.send(result)
+                var sid=req.sessionID
+                query2=`insert into ip values (null,\"${ip}\",\"${sid}\",\"${userId}\",\"${username}\")`
+                console.log('user-->',userId,sid,ip)
+                console.log('query',query2)
+                   dbConnection.db.query(query2, function(err, data) {
+                         if (data) {
+                        res.send(result)
+                        } else {
+                          res.send("3")
+                         }
+                    })
+
+
+
               })
 
 
@@ -78,7 +92,6 @@ router.route('/login')
     })
 
   })
-
 
 
 
@@ -118,8 +131,20 @@ router.route('/signup')
 router.route('/deletesession')
 
   .get(function(req, res) {
+    var userid=req.user.id
+    console.log('userid-->',userid)
     req.session.destroy();
-    res.send('1')
+    query=`delete from ip where userid=\"${userid}\"`
+    console.log('query-->',query)
+          dbConnection.db.query(query, function(err, result) {
+        if (result) {
+          res.send('1')
+        } else {
+          res.send("3")
+        }
+      })
+
+
   });
 
 // NOTE: to check the user session
@@ -209,6 +234,7 @@ router.route('/contact')
 // NOTE: retriveposts
 router.route('/retriveposts')
   .get(function(req, res) {
+
     var query = `select * from posts where status=1`
     dbConnection.db.query(query, function(err, result) {
       if (result) {
@@ -217,9 +243,87 @@ router.route('/retriveposts')
         res.send("0")
       }
     })
-
-
-
   });
+
+
+  //retriveuser
+
+router.route('/retriveuser')
+.get(function(req, res) {
+
+  var query = `select * from ip `
+  dbConnection.db.query(query, function(err, result) {
+    if (result) {
+      console.log('result',result)
+      res.send(result)
+    } else {
+      res.send("0")
+    }
+  })
+
+});
+
+// NOTE: deleteip
+  router.route('/deleteip')
+  .post(function(req, res) {
+    var userid=req.body.userid;
+    var sid=req.body.sid;
+    console.log('ip',req.body);
+    var query1 = `delete from ip where userid=\"${userid}\"`
+    var query2 = `delete from sessions where  session_id=\"${sid}\"`
+    dbConnection.db.query(query1, function(err, result) {
+      if (result) {
+        console.log('result1',result)
+        dbConnection.db.query(query2, function(err, data) {
+          if (data) {
+            console.log('result2',data)
+            res.send('1')
+          } else {
+            res.send("0")
+          }
+        })
+      } else {
+        res.send("0")
+      }
+    })
+  });
+
+  // NOTE: update updatestatus
+
+router.route('/updatestatus')
+.post(function(req, res) {
+  var postid=req.body.id
+  var status=req.body.status
+
+  var query = `update posts set status=\"${status}\" where id=\"${postid}\"`
+  console.log('query',query);
+  dbConnection.db.query(query, function(err, result) {
+    if (result) {
+      console.log('resultdb',result)
+      res.send('1')
+    } else {
+
+      res.send('0')
+    }
+  })
+});
+
+// NOTE: delete post
+router.route('/deletepost')
+.post(function(req, res) {
+  var postid=req.body.id
+
+  var query = `delete from posts where id=\"${postid}\"`
+  console.log('query',query);
+  dbConnection.db.query(query, function(err, result) {
+    if (result) {
+      console.log('delete',result)
+      res.send('1')
+    } else {
+      res.send('0')
+    }
+  })
+});
+
 
 module.exports = router;

@@ -357,7 +357,7 @@ section .section-title {
 }
 
 #logout {
-  padding-left: 1000px;
+  padding-left: 950px;
 }
 
 /*End Header*/
@@ -743,48 +743,83 @@ form.ng-enter.ng-enter-active {
 }
 
 /****** animation end *******/
-
 /***** main page section ****/
-
 .mainpage {
-
- background-image: url("../image/logo.png");
- background-repeat: no-repeat;
- /*background-position: center;*/
- background-size: cover;
- /*float: left;*/
- /*width: 100%;*/
- padding: 400px;
+  background-image: url("../image/logo.png");
+  background-repeat: no-repeat;
+  /*background-position: center;*/
+  background-size: cover;
+  /*float: left;*/
+  /*width: 100%;*/
+  padding: 270px;
 }
+
 #quote {
- border-style: groove;
- border-radius: 500px;
- font: 400 100px/1.5 'Pacifico', Helvetica, sans-serif;
- text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
- font-size: 60px;
- color: #C0392B;
- background-color: #D5D8DC  ;
- opacity: 0.8;
- text-align: center;
+  border-style: groove;
+  border-radius: 500px;
+  /*font: 400 100px/1.5 'Pacifico', Helvetica, sans-serif;*/
+  font-family: fantasy;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1), 7px 7px 0px rgba(0, 0, 0, 0.05);
+  font-size: 50px;
+  color: #C0392B;
+  background-color: #D5D8DC;
+  opacity: 0.8;
+  text-align: center;
 }
 
+#quote:hover {
+  background-color: antiquewhite;
+  cursor: pointer;
+}
+
+.loginsubmit:hover {
+  background-color: dimgray
+}
+
+.signupsubmit:hover {
+  background-color: dimgray
+}
 
 .loginsubmit {
- color: white;
- background-color: #566573;
- margin-top: 70px;
- margin-left: 235px;
- width: 250px;
- opacity: 0.8;
+  color: white;
+  background-color: #C0392B;
+  margin-top: 70px;
+  margin-left: 235px;
+  width: 250px;
+  opacity: 0.6;
 }
 
 .signupsubmit {
- color: white;
- background-color: #566573;
- margin-top: 70px;
- margin-left: 150px;
- width: 250px;
- opacity: 0.8;
+  color: white;
+  background-color: #C0392B;
+  margin-top: 70px;
+  margin-left: 150px;
+  width: 250px;
+  opacity: 0.6;
 }
 
-/**** End main page ****/
+.swal-wide {
+  width: 80% !important;
+  height: 80%;
+  background-color: black !important;
+  opacity: 0.8;
+}
+
+/**** End main page section ****/
+/***** monitorscreen start ****/
+.form-control-borderless {
+  border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.monitorscreenhoverColorTable {
+  background-color: lightgreen;
+  color: black;
+}
+
+/***** monitorscreen end ****/
