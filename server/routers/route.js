@@ -288,5 +288,26 @@ router.route('/retriveuser')
     })
   });
 
+  // NOTE: update updatestatus
+
+router.route('/updatestatus')
+.post(function(req, res) {
+  var postid=req.body.id
+  var status=req.body.status
+
+  var query = `update posts set status=\"${status}\" where id=\"${postid}\"`
+  console.log('query',query);
+  dbConnection.db.query(query, function(err, result) {
+    if (result) {
+      console.log('resultdb',result)
+      res.send('1')
+    } else {
+
+      res.send('0')
+    }
+  })
+});
+
+
 
 module.exports = router;
