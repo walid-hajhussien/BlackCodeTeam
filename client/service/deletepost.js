@@ -4,7 +4,7 @@ angular.module('app').service('deletepost', function ($http, $window) {
 
     $http({
       method: 'POST',
-      url: 'https://jood.herokuapp.com/user/deletepost',
+      url: 'http://127.0.0.1:4000/user/deletepost',
       contentType: "application/json",
       data: JSON.stringify(data)
     }).then(function successCallback(response) {

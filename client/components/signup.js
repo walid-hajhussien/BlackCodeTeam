@@ -67,7 +67,9 @@ angular.module('app').component('signup', {
      </div>
      </form>
    <p ng-show="$ctrl.alreadyuser">the user already Exist </p>
-   <a href="#!/mainpage"><i style="color:green;cursor: pointer" class="fa  fa-backward fa-fw"></i></a>
+   <a href="#!/login"><i style="color:green;cursor: pointer" class="fa  fa-backward fa-fw"></i></a>
+
+
  </div>
  </div>
  </div>

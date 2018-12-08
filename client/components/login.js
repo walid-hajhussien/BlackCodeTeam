@@ -71,7 +71,7 @@ angular.module('app').component('login', {
       getip();
 
     }
-/////////////////
+
 
     // NOTE: variable
     this.success = false;

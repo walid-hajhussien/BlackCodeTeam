@@ -3,7 +3,7 @@ angular.module('app').service('retriveuser', function ($http, $window) {
 
     $http({
       method: 'GET',
-      url: 'https://jood.herokuapp.com/user/retriveuser'
+      url: 'http://127.0.0.1:4000/user/retriveuser'
     }).then(function successCallback(response) {
       cb(response)
     }, function errorCallback(response) {

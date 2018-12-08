@@ -96,6 +96,7 @@ router.route('/login')
 
 
 
+
 // NOTE: when user signup
 router.route('/signup')
 
@@ -157,6 +158,7 @@ router.route('/checkSession')
       var query = `select * from credential where id=\"${userId}\"`
       dbConnection.db.query(query, function(err, result) {
         if (result) {
+
           res.send(result)
         } else {
           res.send("3")
@@ -243,25 +245,30 @@ router.route('/retriveposts')
         res.send("0")
       }
     })
+
+
+
+
   });
+
+
 
 
   //retriveuser
 
-router.route('/retriveuser')
-.get(function(req, res) {
+  router.route('/retriveuser')
+  .get(function(req, res) {
 
-  var query = `select * from ip `
-  dbConnection.db.query(query, function(err, result) {
-    if (result) {
-      console.log('result',result)
-      res.send(result)
-    } else {
-      res.send("0")
-    }
-  })
-
-});
+    var query = `select * from ip `
+    dbConnection.db.query(query, function(err, result) {
+      if (result) {
+        console.log('result',result)
+        res.send(result)
+      } else {
+        res.send("0")
+      }
+    })
+  });
 
 // NOTE: deleteip
   router.route('/deleteip')
@@ -290,40 +297,45 @@ router.route('/retriveuser')
 
   // NOTE: update updatestatus
 
-router.route('/updatestatus')
-.post(function(req, res) {
-  var postid=req.body.id
-  var status=req.body.status
+  router.route('/updatestatus')
+  .post(function(req, res) {
+    var postid=req.body.id
+    var status=req.body.status
 
-  var query = `update posts set status=\"${status}\" where id=\"${postid}\"`
-  console.log('query',query);
-  dbConnection.db.query(query, function(err, result) {
-    if (result) {
-      console.log('resultdb',result)
-      res.send('1')
-    } else {
+    var query = `update posts set status=\"${status}\" where id=\"${postid}\"`
+    console.log('query',query);
+    dbConnection.db.query(query, function(err, result) {
+      if (result) {
+        console.log('resultdb',result)
+        res.send('1')
+      } else {
 
-      res.send('0')
-    }
-  })
-});
+        res.send('0')
+      }
+    })
+  });
 
-// NOTE: delete post
-router.route('/deletepost')
-.post(function(req, res) {
-  var postid=req.body.id
 
-  var query = `delete from posts where id=\"${postid}\"`
-  console.log('query',query);
-  dbConnection.db.query(query, function(err, result) {
-    if (result) {
-      console.log('delete',result)
-      res.send('1')
-    } else {
-      res.send('0')
-    }
-  })
-});
+
+
+
+  // NOTE: delete post
+  router.route('/deletepost')
+  .post(function(req, res) {
+    var postid=req.body.id
+
+    var query = `delete from posts where id=\"${postid}\"`
+    console.log('query',query);
+    dbConnection.db.query(query, function(err, result) {
+      if (result) {
+        console.log('delete',result)
+        res.send('1')
+      } else {
+        res.send('0')
+      }
+    })
+  });
+
 
 
 module.exports = router;

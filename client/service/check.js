@@ -4,7 +4,7 @@ angular.module('app').service('check', function($http, $window) {
 
     $http({
       method: 'POST',
-      url: 'https://jood.herokuapp.com/user/login',
+      url: 'http://127.0.0.1:4000/user/login',
       contentType: "application/json",
       data: JSON.stringify(data)
     }).then(function successCallback(response) {

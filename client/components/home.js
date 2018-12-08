@@ -265,7 +265,7 @@ ng-model="post.condition" required style="background:white;color:black">
 
 
 <div class="allPost">
-<span  ng-repeat="(key ,post) in $ctrl.mainposts | filter:search |orderBy:'-date'">
+<span  ng-repeat="(key ,post) in $ctrl.mainposts  | filter:search |orderBy:'-date'">
   <div ng-click="$ctrl.sweetalert(post)"  class="card homediv" style="width: 18rem; display: inline-block;">
   <img class="card-img-top imagePost" ng-src="{{$ctrl.image[post.image]}}" alt="Card image cap">
   <div class="card-body ">

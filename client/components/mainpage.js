@@ -5,14 +5,14 @@ angular.module('app').component('mainpage', {
 
     this.show = function() {
       Swal({
-        customClass: 'swal-wide',
-        html: `<video style="width:1000px;height:600px;" autoplay  loop id="myVideo"><source src="video/jood.mp4" type="video/mp4"></video>
+ customClass: 'swal-wide',
+  html:`<video style="width:1000px;height:600px;" autoplay  loop id="myVideo"><source src="video/jood.mp4" type="video/mp4"></video>
 
   `,
-        showCloseButton: false,
-        showConfirmButton: false,
+  showCloseButton: false,
+  showConfirmButton: false,
 
-      })
+})
     }
 
 

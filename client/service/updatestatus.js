@@ -4,7 +4,7 @@ angular.module('app').service('updatestatus', function ($http, $window) {
 
     $http({
       method: 'POST',
-      url: 'https://jood.herokuapp.com/user/updatestatus',
+      url: 'http://127.0.0.1:4000/user/updatestatus',
       contentType: "application/json",
       data: JSON.stringify(data)
     }).then(function successCallback(response) {

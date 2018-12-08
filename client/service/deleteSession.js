@@ -3,7 +3,7 @@ this.set=function(cb){
 
   $http({
     method: 'GET',
-    url: 'https://jood.herokuapp.com/user/deletesession'
+    url: 'http://127.0.0.1:4000/user/deletesession'
   }).then(function successCallback(response) {
     cb(response)
     }, function errorCallback(response) {

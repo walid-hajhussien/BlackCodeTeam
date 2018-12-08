@@ -358,6 +358,7 @@ section .section-title {
 
 #logout {
   padding-left: 950px;
+
 }
 
 /*End Header*/
@@ -782,7 +783,7 @@ form.ng-enter.ng-enter-active {
 
 .loginsubmit {
   color: white;
-  background-color: #C0392B;
+  background-color:#C0392B;
   margin-top: 70px;
   margin-left: 235px;
   width: 250px;
@@ -791,35 +792,34 @@ form.ng-enter.ng-enter-active {
 
 .signupsubmit {
   color: white;
-  background-color: #C0392B;
+  background-color:#C0392B;
   margin-top: 70px;
   margin-left: 150px;
   width: 250px;
   opacity: 0.6;
 }
 
-.swal-wide {
-  width: 80% !important;
-  height: 80%;
-  background-color: black !important;
-  opacity: 0.8;
+.swal-wide{
+    width:80% !important;
+    height:80%;
+    background-color:black !important;
+    opacity: 0.8;
 }
 
 /**** End main page section ****/
 /***** monitorscreen start ****/
 .form-control-borderless {
-  border: none;
+    border: none;
 }
 
 .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
-  border: none;
-  outline: none;
-  box-shadow: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
-.monitorscreenhoverColorTable {
+.monitorscreenhoverColorTable{
   background-color: lightgreen;
   color: black;
 }
-
 /***** monitorscreen end ****/

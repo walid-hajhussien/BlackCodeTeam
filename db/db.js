@@ -3,11 +3,11 @@ var mysql = require('mysql');
 
 //Note: to insert tht the database credential
 var dbConnection = mysql.createConnection({
-  host: "us-cdbr-iron-east-01.cleardb.net",
-  user: "ba8ca36afca931",
-  password: '2e7cb6ba',
+  host: "localhost",
+  user: "root",
+  password: '19919901',
   insecureAuth: true,
-  database: 'heroku_2de4345a1bfca38'
+  database: 'chat'
 });
 
 //Note:create the connection
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS credential (
   PRIMARY KEY (id)
 );
 `
-
+//note: 
 var queryPostsTable = `
 CREATE TABLE IF NOT EXISTS posts (
   id INTEGER NOT NULL AUTO_INCREMENT ,
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS posts (
 );
 `
 
-//note
+//note 
 var queryIpTable=`
 CREATE TABLE IF NOT EXISTS ip (
   id INTEGER NOT NULL AUTO_INCREMENT ,
@@ -62,8 +62,9 @@ CREATE TABLE IF NOT EXISTS ip (
   sid text NOT NULL ,
   userid INTEGER NOT NULL ,
   username text NOT NULL ,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id) 
 );`
+
 
 // Note:create the table
 dbConnection.query(queryCredentialTable, function(err, result) {
