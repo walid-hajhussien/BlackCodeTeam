@@ -1,7 +1,7 @@
 angular.module('app').component('userprofile', {
 
   // sweet alert message
-  controller: function(checksession, userprofile,updatestatus) {
+  controller: function($window,checksession, userprofile,updatestatus,deletepost) {
     //get current user function
     this.getuser = function() {
       that = this
@@ -34,12 +34,26 @@ angular.module('app').component('userprofile', {
       if (post.status) {
         swal("warning!", "You should Deactivat the Post first!", "warning");
       } else {
-        swal("Deleted!", "Your post is Deleted!", "success");
-        var deletedPost = this.posts.indexOf(post);
-        this.posts.splice(deletedPost, 1);
+      var that=this
+        deletepost.set(post,function(data){
+          if(data.data==1){
+            swal("Deleted!", "Your post is Deleted!", "success");
+            var deletedPost = that.posts.indexOf(post);
+            that.posts.splice(deletedPost, 1);
+
+          }else{
+
+          }
+
+        })
+
 
       }
     }
+
+
+
+
 
     this.activatBtn = function(post) {
       console.log(post);

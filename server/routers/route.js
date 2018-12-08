@@ -308,6 +308,22 @@ router.route('/updatestatus')
   })
 });
 
+// NOTE: delete post
+router.route('/deletepost')
+.post(function(req, res) {
+  var postid=req.body.id
+
+  var query = `delete from posts where id=\"${postid}\"`
+  console.log('query',query);
+  dbConnection.db.query(query, function(err, result) {
+    if (result) {
+      console.log('delete',result)
+      res.send('1')
+    } else {
+      res.send('0')
+    }
+  })
+});
 
 
 module.exports = router;
