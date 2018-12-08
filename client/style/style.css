@@ -743,3 +743,48 @@ form.ng-enter.ng-enter-active {
 }
 
 /****** animation end *******/
+
+/***** main page section ****/
+
+.mainpage {
+
+ background-image: url("../image/logo.png");
+ background-repeat: no-repeat;
+ /*background-position: center;*/
+ background-size: cover;
+ /*float: left;*/
+ /*width: 100%;*/
+ padding: 400px;
+}
+#quote {
+ border-style: groove;
+ border-radius: 500px;
+ font: 400 100px/1.5 'Pacifico', Helvetica, sans-serif;
+ text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
+ font-size: 60px;
+ color: #C0392B;
+ background-color: #D5D8DC  ;
+ opacity: 0.8;
+ text-align: center;
+}
+
+
+.loginsubmit {
+ color: white;
+ background-color: #566573;
+ margin-top: 70px;
+ margin-left: 235px;
+ width: 250px;
+ opacity: 0.8;
+}
+
+.signupsubmit {
+ color: white;
+ background-color: #566573;
+ margin-top: 70px;
+ margin-left: 150px;
+ width: 250px;
+ opacity: 0.8;
+}
+
+/**** End main page ****/
