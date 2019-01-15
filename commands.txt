@@ -7,3 +7,12 @@ git remote add upstream https://github.com/BlackCodeTeam/BlackCodeTeam.git
 6) git pull upstream master
 7) git push origin master
 8) send pull request to the organization
+
+// 
+1)git remote add upstream https://github.com/BlackHoleTeam-BHT/DoctorTech.git
+2)git pull --rebase upstream master 
+3) create branch : git checkout -b
+
+
+4) after fix the conflict use continue 
+5)git rebase --continue
